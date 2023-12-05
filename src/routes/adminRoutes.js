@@ -1,12 +1,13 @@
-const express = require("express")
+const express = require("express");
+const adminController = require("../controllers/adminController");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/admin", (req,res) => res.send("Pagina admin"))
-router.get("/admin/create", (req, res) => res.send("Pagina admin"));
-router.post("/admin/create", (req, res) => res.send("Pagina admin"));
-router.get("/admin/edit/:id", (req, res) => res.send("Pagina admin"));
-router.put("/admin/edit/:id", (req, res) => res.send("Pagina admin"));
-router.delete("/admin/delete/:id", (req, res) => res.send("Pagina admin"));
+router.get("/", adminController.getAdminView);
+router.get("/create", adminController.getCreateView);
+router.post("/create", adminController.create);
+router.get("/edit/:id", adminController.getUpdateView);
+router.put("/edit/:id", adminController.update);
+router.delete("/delete/:id", adminController.delete);
 
 module.exports = router;

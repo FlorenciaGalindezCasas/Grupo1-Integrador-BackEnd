@@ -15,9 +15,9 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", mainRoutes);
-app.use("/", adminRoutes);
-app.use("/", authRoutes);
-app.use("/", shopRoutes);
+app.use("/admin", adminRoutes);
+app.use("/auth", authRoutes);
+app.use("/shop", shopRoutes);
 
 app.listen(PORT, () => {
   console.log(`Example app listening at http:/localhost:${PORT}`);
