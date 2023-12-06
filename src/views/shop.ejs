@@ -1,0 +1,203 @@
+<%- include('partials/metadata'); -%>
+<%- include('partials/header'); -%>
+<div class="container shop-container">
+  <div>
+    <div>
+        <label class="search-content"> BUSCAR </label>
+        <input placeholder="item o categoria"> 
+    </div>
+    <div>
+        <label class="search-content" for="names"> ORDENAR POR</label> 
+        <select name="names" id="names"> 
+            <option value="1">Mayor a menor</option> 
+            <option value="2">Menor a mayor</option> 
+            <option value="3">Desordenado!!!</option> 
+        </select>
+    </div>
+    <div class="row">
+        <label class="search-content">PRECIO </label>
+        <label class="min-max-content"> MIN <input placeholder="0"> </label>
+        <label class="min-max-content"> - MAX <input placeholder="0"> </label>
+    </div>
+      <label class="search-content"> FILTRAR </label>
+      <div>
+        <label class="new-content"><input type="checkbox" id="box1" value="1" /> NUEVOS </label>
+        </br>
+            <label class="new-content"><input type="checkbox" id="box1" value="2" /> OFERTAS </label>
+        </br>
+
+            <label class="new-content"><input type="checkbox" id="box1" value="3" /> EDICIÓN ESPECIAL </label>
+        </br>
+
+        <label class="new-content"><input type="checkbox" id="box1" value="4" /> FAVORITOS </label>
+      </div>
+    </div>
+          
+
+
+    <div class="shop-column">
+        
+      <div class="container-cards">
+        <% items.forEach((item, i) => { %>
+        <article class="card-item">
+          <a class="card-item__link" href="">
+            <picture class="card-item__cover">
+              <span class="card-item__tag">Nuevo</span>
+              <img class="card-item__img--front"src="../../../public/img/star-wars/trooper-1.webp" alt="Figura coleccionable Funko de un Stormtrooper">
+              <img class="card-item__img--back" src="../../../public/img/star-wars/trooper-box.webp" alt="Figura coleccionable Funko de un Stormtrooper en caja">
+            </picture>
+            <div class="card-item__content">
+              <p class="card-item__licence">STAR WARS</p>
+              <h4 class="card-item__name">STORMTROOPER LIGHTSABER</h4>
+              <p class="card-item__price">$1799,99.-</p>
+              <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+            </div>
+          </a>
+        </article>
+        <% }) %>
+        <!-- <article class="card-item">
+          <a class="card-item__link" href="">
+            <picture class="card-item__cover">
+              <span class="card-item__tag">Nuevo</span>
+              <img class="card-item__img--front" src="../../../public/img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto">
+              <img class="card-item__img--back"  src="../../../public/img/pokemon/pidgeotto-box.webp" alt="Figura coleccionable Funko de Pidgeotto en caja">
+            </picture>
+            <div class="card-item__content">
+              <p class="card-item__licence">POKEMON</p>
+              <h4 class="card-item__name">PIDGEOTTO</h4>
+              <p class="card-item__price">$1799,99.-</p>
+              <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+            </div>
+          </a>
+        </article>
+    
+        <article class="card-item">
+          <a class="card-item__link" href="">
+            <picture class="card-item__cover">
+              <span class="card-item__tag">Nuevo</span>
+              <img class="card-item__img--front" src="../../../public/img/harry-potter/luna-1.webp" alt="Figura coleccionable Funko de Luna Lovegood">
+              <img class="card-item__img--back"  src="../../../public/img/harry-potter/luna-box.webp" alt="Figura coleccionable Funko de Luna Lovegood en caja">
+            </picture>
+            <div class="card-item__content">
+              <p class="card-item__licence">HARRY POTTER</p>
+              <h4 class="card-item__name">LUNA LOVEGOOD LION MASK</h4>
+              <p class="card-item__price">$1799,99.-</p>
+              <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+            </div>
+          </a>
+        </article>
+
+      </div>
+
+      <div class="container-cards">
+            
+          <article class="card-item">
+              <a class="card-item__link" href="">
+                <picture class="card-item__cover">
+                <span class="card-item__tag">Nuevo</span>
+                    <img class="card-item__img--front"src="../../../public/img/star-wars/trooper-1.webp" alt="Figura coleccionable Funko de un Stormtrooper">
+                    <img class="card-item__img--back" src="../../../public/img/star-wars/trooper-box.webp" alt="Figura coleccionable Funko de un Stormtrooper en caja">
+                </picture>
+                <div class="card-item__content">
+                    <p class="card-item__licence">STAR WARS</p>
+                    <h4 class="card-item__name">STORMTROOPER LIGHTSABER</h4>
+                    <p class="card-item__price">$1799,99.-</p>
+                    <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+                </div>
+              </a>
+          </article>
+      
+        
+          <article class="card-item">
+              <a class="card-item__link" href="">
+                <picture class="card-item__cover">
+                    <span class="card-item__tag">Nuevo</span>
+                    <img class="card-item__img--front" src="../../../public/img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto">
+                    <img class="card-item__img--back"  src="../../../public/img/pokemon/pidgeotto-box.webp" alt="Figura coleccionable Funko de Pidgeotto en caja">
+                </picture>
+                <div class="card-item__content">
+                    <p class="card-item__licence">POKEMON</p>
+                    <h4 class="card-item__name">PIDGEOTTO</h4>
+                    <p class="card-item__price">$1799,99.-</p>
+                    <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+                </div>
+              </a>
+          </article>
+    
+          <article class="card-item">
+              <a class="card-item__link" href="">
+                <picture class="card-item__cover">
+                    <span class="card-item__tag">Nuevo</span>
+                    <img class="card-item__img--front" src="../../../public/img/harry-potter/luna-1.webp" alt="Figura coleccionable Funko de Luna Lovegood">
+                    <img class="card-item__img--back"  src="../../../public/img/harry-potter/luna-box.webp" alt="Figura coleccionable Funko de Luna Lovegood en caja">
+                </picture>
+                <div class="card-item__content">
+                    <p class="card-item__licence">HARRY POTTER</p>
+                    <h4 class="card-item__name">LUNA LOVEGOOD LION MASK</h4>
+                    <p class="card-item__price">$1799,99.-</p>
+                    <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+                </div>
+              </a>
+
+          </article>
+
+
+      </div>
+
+      <div class="container-cards">
+                
+          <article class="card-item">
+             <a class="card-item__link" href="">
+                <picture class="card-item__cover">
+                <span class="card-item__tag">Nuevo</span>
+                   <img class="card-item__img--front"src="../../../public/img/star-wars/trooper-1.webp" alt="Figura coleccionable Funko de un Stormtrooper">
+                   <img class="card-item__img--back" src="../../../public/img/star-wars/trooper-box.webp" alt="Figura coleccionable Funko de un Stormtrooper en caja">
+                </picture>
+                <div class="card-item__content">
+                   <p class="card-item__licence">STAR WARS</p>
+                   <h4 class="card-item__name">STORMTROOPER LIGHTSABER</h4>
+                   <p class="card-item__price">$1799,99.-</p>
+                   <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+                </div>
+              </a>
+          </article>
+     
+       
+          <article class="card-item">
+             <a class="card-item__link" href="">
+                <picture class="card-item__cover">
+                   <span class="card-item__tag">Nuevo</span>
+                   <img class="card-item__img--front" src="../../../public/img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto">
+                   <img class="card-item__img--back"  src="../../../public/img/pokemon/pidgeotto-box.webp" alt="Figura coleccionable Funko de Pidgeotto en caja">
+                </picture>
+                <div class="card-item__content">
+                    <p class="card-item__licence">POKEMON</p>
+                    <h4 class="card-item__name">PIDGEOTTO</h4>
+                    <p class="card-item__price">$1799,99.-</p>
+                    <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+                </div>
+             </a>
+          </article>
+    
+          <article class="card-item">
+             <a class="card-item__link" href="">
+                <picture class="card-item__cover">
+                   <span class="card-item__tag">Nuevo</span>
+                   <img class="card-item__img--front" src="../../../public/img/harry-potter/luna-1.webp" alt="Figura coleccionable Funko de Luna Lovegood">
+                   <img class="card-item__img--back"  src="../../../public/img/harry-potter/luna-box.webp" alt="Figura coleccionable Funko de Luna Lovegood en caja">
+                </picture>
+                <div class="card-item__content">
+                    <p class="card-item__licence">HARRY POTTER</p>
+                    <h4 class="card-item__name">LUNA LOVEGOOD LION MASK</h4>
+                    <p class="card-item__price">$1799,99.-</p>
+                    <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+                </div>
+             </a>
+
+          </article> -->
+
+
+    </div>
+  </div>
+</div>
+<%- include('partials/footer'); -%>

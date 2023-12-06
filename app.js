@@ -1,17 +1,20 @@
 const express = require("express");
-
-const app = express();
-
+const path = require("path");
 const mainRoutes = require("./src/routes/mainRoutes.js");
 const authRoutes = require("./src/routes/authRoutes.js")
 const adminRoutes = require("./src/routes/adminRoutes.js");
 const shopRoutes = require("./src/routes/shopRoutes.js");
 
+const app = express();
+
+app.use("/public", express.static(path.resolve(__dirname, "public")));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, './src/views'));
+
 require("dotenv").config()
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", mainRoutes);
