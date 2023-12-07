@@ -1,37 +1,37 @@
 <%- include('partials/metadata'); -%>
 <%- include('partials/header'); -%>
 <div class="container shop-container">
-  <div>
+  <div class="filter">
     <div>
       <label class="search-content"> BUSCAR </label>
       <input placeholder="item o categoria"> 
     </div>
     <div>
       <label class="search-content" for="names"> ORDENAR POR</label> 
-      <select name="names" id="names"> 
+      <select style="width: 100%;" name="names" id="names"> 
         <option value="1">Mayor a menor</option> 
         <option value="2">Menor a mayor</option> 
         <option value="3">Desordenado!!!</option> 
       </select>
     </div>
     <div class="row">
-      <label class="search-content">PRECIO </label>
-      <label class="min-max-content"> MIN <input placeholder="0"> </label>
-      <label class="min-max-content"> - MAX <input placeholder="0"> </label>
+      <label class="search-content">PRECIO </label><br/>
+      <div class="price">
+        <label class="min-max-content"> MIN</label> <input style="width: 20%;" placeholder="0">
+        <span>-</span> 
+        <label class="min-max-content"> MAX </label> <input style="width: 20%;" placeholder="0"> 
+      </div>
     </div>
-
-    <label class="search-content"> FILTRAR </label>
 
     <div>
-      <label class="new-content"><input type="checkbox" id="box1" value="1" /> NUEVOS </label>
-      </br>
-      <label class="new-content"><input type="checkbox" id="box1" value="2" /> OFERTAS </label>
-      </br>
-      <label class="new-content"><input type="checkbox" id="box1" value="3" /> EDICIÓN ESPECIAL </label>
-      </br>
-      <label class="new-content"><input type="checkbox" id="box1" value="4" /> FAVORITOS </label>
+      <label class="search-content"> FILTRAR </label><br/>
+      <div class="filtros">
+        <label class="new-content"><input type="checkbox" id="box1" value="1" /> NUEVOS </label></br>
+        <label class="new-content"><input type="checkbox" id="box1" value="2" /> OFERTAS </label></br>
+        <label class="new-content"><input type="checkbox" id="box1" value="3" /> EDICIÓN ESPECIAL </label></br>
+        <label class="new-content"><input type="checkbox" id="box1" value="4" /> FAVORITOS </label>
+      </div>
     </div>
-
   </div>
 
   <div class="shop-column">
@@ -39,7 +39,7 @@
     <div class="container-cards">
       <% items.forEach((item, i) => { %>
       <article class="card-item">
-        <a class="card-item__link" href="">
+        <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
           <picture class="card-item__cover">
             <span class="card-item__tag">Nuevo</span>
             <img class="card-item__img--front" src=<%= item.img_front %> alt=<%= item.product_description %>>

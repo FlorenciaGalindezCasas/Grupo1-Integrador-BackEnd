@@ -1,4 +1,3 @@
-const path = require("path");
 const fs = require("fs");
 
 function reedJsonFile(callback) {
@@ -18,20 +17,21 @@ function reedJsonFile(callback) {
 const shopController = {
   getShopView: (req, res) => {
     reedJsonFile((err, result) => {
-      return res.render(path.resolve(__dirname, "../views/shop"), {
+      return res.render("shop", {
         items: result
       })
     })
   },
-  getItem: (req, res) => res.send(`Ruta para obtener el item de ID: ${req.params.id}`),
-  addItemToCart: (req, res) => res.send(`Ruta para agregar el item de ID ${req.params.id} al carrito`),
-  getCartView: (req, res) => {
+  getItem: (req, res) => {
     reedJsonFile((err, result) => {
-      return res.render(path.resolve(__dirname, "../views/carrito"), {
-        items: result
-      })
+      const item = result.find(i => i.product_id === +req.params.id);
+      return res.render("item", {
+        item
+      });
     })
   },
+  addItemToCart: (req, res) => res.send(`Ruta para agregar el item de ID ${req.params.id} al carrito`),
+  getCartView: (req, res) => res.render("carrito"),
   confirmPurchase: (req, res) => res.send("Ruta para confirmar la compra")
 };
 
