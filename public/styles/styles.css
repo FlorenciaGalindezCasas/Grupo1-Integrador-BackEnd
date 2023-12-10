@@ -465,11 +465,21 @@ iconify-icon {
    gap:5px
 }
 
-/* .filtros label{
+.price input{
+   text-align:center
+}
+
+.filtros{
+   display:flex;
+   flex-direction: column;
+   gap: 5px
+}
+
+.filtros label{
    display:flex;
    align-items: center;
-   gap:0
-} */
+   gap:5px
+}
 
 /*CARRITO*/
 .cart-title{
@@ -512,7 +522,7 @@ iconify-icon {
  .cart-item {
    overflow: auto;
  }
- .cart-info {
+ .cart-info{
  float: left;
  }
 .cart-baby {
@@ -523,7 +533,6 @@ iconify-icon {
    font-size: 14px;
 }
 
-
 .resumen-container {
    width: 300px;
    margin: 20px;
@@ -532,7 +541,7 @@ iconify-icon {
  }
  
  
- .resumen-titulo {
+.resumen-titulo {
    display: inline-block;
    border-bottom: 2px solid var(--primary-solid);
    margin-bottom: 10px;
