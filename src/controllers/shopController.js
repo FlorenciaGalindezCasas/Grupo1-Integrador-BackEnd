@@ -6,9 +6,16 @@ const License = require('../models/license.model');
 const shopController = {
   getShopView: async (req, res) => {
     try {
-      const products = await Product.findAll();
-
-      console.log('Producto: ', products);
+      const products = await Product.findAll({
+        include: [
+          {
+            model: License
+          },
+          {
+            model: Category
+          }
+        ]
+      });
 
       return res.status(200).render("shop", {
         items: products

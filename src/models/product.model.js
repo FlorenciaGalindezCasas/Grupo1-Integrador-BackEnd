@@ -1,9 +1,16 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/sequelize');
 const License = require('./license.model');
 const Category = require('./category.model');
 
-const Product = sequelize.define('Product', {
+class Product extends Model {}
+
+Product.init({
+  product_id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
   product_name: {
     type: DataTypes.STRING(60),
     allowNull: false,
@@ -39,21 +46,22 @@ const Product = sequelize.define('Product', {
     type: DataTypes.INTEGER,
     references: {
       model: License,
-      key: "id"     
+      key: "license_id"     
     }
   },
   category_id: {
     type: DataTypes.INTEGER,
     references: {
       model: Category,
-      key: "id"
+      key: "category_id"
     }
   }
-})
+}, {
+  sequelize,
+  modelName: "Product"
+});
 
-Product.associations = (models) => {
-  Product.hasOne(models.License, { foreignKey: "license_id", as: "license" });
-  Product.hasOne(models.Category, { foreignKey: "category_id", as: "category" });
-}
+Product.hasOne(License, { foreignKey: 'license_id' });
+Product.hasOne(Category, { foreignKey: 'category_id' });
 
 module.exports = Product;

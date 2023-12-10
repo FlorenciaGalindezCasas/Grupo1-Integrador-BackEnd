@@ -1,8 +1,15 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/sequelize');
 const Product = require('./product.model');
 
-const Category = sequelize.define('Category', {
+class Category extends Model {}
+
+Category.init({
+  category_id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   category_name: {
     type: DataTypes.STRING(100),
     unique: true,
@@ -12,10 +19,9 @@ const Category = sequelize.define('Category', {
     type: DataTypes.STRING(255),
     allowNull: false
   }
+}, {
+  sequelize,
+  modelName: "Category"
 });
-
-Category.associations = (models) => {
-  Category.hasMany(models.Product, { as: 'products' });
-};
 
 module.exports = Category;
