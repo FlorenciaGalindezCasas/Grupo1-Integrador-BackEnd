@@ -32,9 +32,7 @@ const adminController = {
         license_id,
         category_id
       });
-
-      console.log('Producto: ', newProduct);
-
+      
       return res.status(201).json({ product: newProduct });
     } catch (error) {
       return res.status(500).send('Internal server error');

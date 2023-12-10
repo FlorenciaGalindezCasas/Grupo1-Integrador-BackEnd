@@ -37,7 +37,32 @@ const shopController = {
       return res.status(500).send("Error")
     }
   },
-  addItemToCart: (req, res) => res.send(`Ruta para agregar el item de ID ${req.params.id} al carrito`),
+  addItemToCart: async (req, res) => {
+    try {
+      const productID = +req.params.id
+
+      const cantidad = req.body
+      
+      const product = await Product.findByPk(productID)
+      if (!product) {
+        return res.status(404).json({ error: "Product not found" });
+      }
+
+       const compra = await Cart.create({
+        product_id: productID,
+        cantidad: cantidad,
+        total: cantidad*product.price 
+      })
+      
+      return res.status(201).json({
+        compra,
+        message: "Producto agregado con exito"
+      })
+
+    } catch (error) {
+      
+    }
+  },
   getCartView: (req, res) => res.render("carrito"),
   confirmPurchase: (req, res) => res.send("Ruta para confirmar la compra")
 };

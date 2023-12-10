@@ -9,10 +9,12 @@
 			<p class="item_subtitle"><%= item.product_name %></p>
 			<p><%= item.product_description %></p>
 			<p class="item_precio"><%= item.product_price %></p>
-			<div class="numeric-input">
-				<input class="item_number" type="number" id="numero" value="0" min="0" max="100">
-				<a class="item_add_cart_btn" href=./shop>Agregar al Carrito</a>
-			</div>
+            <form action="addItemToCart" method="post">
+              <div class="numeric-input">
+                <input class="item_number" type="number" name="cantidad" value="0" min="0" max="100">
+                <button type="submit" class="item_add_cart_btn">Agregar al Carrito</button>
+              </div>
+            </form>
 			<p class="item_promo">Ver métodos de pago - 3 CUOTAS SIN INTERÉS</p>
 		</div>
 	</section>

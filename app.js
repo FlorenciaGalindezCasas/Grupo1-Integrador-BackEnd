@@ -7,6 +7,7 @@ const adminRoutes = require("./src/routes/adminRoutes.js");
 const shopRoutes = require("./src/routes/shopRoutes.js");
 const User = require('./src/models/user.model.js');
 const Product = require('./src/models/product.model.js');
+const Cart = require("./src/models/cart.model.js")
 
 const app = express();
 
