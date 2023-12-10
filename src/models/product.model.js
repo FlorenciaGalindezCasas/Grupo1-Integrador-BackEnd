@@ -52,8 +52,8 @@ const Product = sequelize.define('Product', {
 })
 
 Product.associations = (models) => {
-  Product.belongsTo(models.License, { foreignKey: "license_id", as: "license" });
-  Product.belongsTo(models.Category, { foreignKey: "category_id", as: "category" });
+  Product.hasOne(models.License, { foreignKey: "license_id", as: "license" });
+  Product.hasOne(models.Category, { foreignKey: "category_id", as: "category" });
 }
 
 module.exports = Product;
