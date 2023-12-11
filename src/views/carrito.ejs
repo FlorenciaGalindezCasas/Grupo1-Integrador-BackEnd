@@ -1,89 +1,73 @@
 <%- include('partials/metadata'); -%>
 <%- include('partials/header'); -%>
-<div class="cart-title"></div>
-  <h1 class="cart-title">CARRITO DE COMPRAS</h1>
+<div class="cart-title">
+  <h1>CARRITO DE COMPRAS</h1>
+</div>
 
   <div class="cart-container">
-    <table class="cart-table">
-      <thead class="cart-table-header">
-        <tr>
-          <th>DELLATE DE PRODUCTO</th>
-          <th>CANTIDAD</th>
-          <th>TOTAL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td> 
-            <div class="cart-item">
-              <img class="cart-picture" src="../../public/img/star-wars/baby-yoda-1.webp" alt="Figura coleccionable Funko de Yoda">
-              <div class="cart-info">
-                <h4 class="card-item__name">BABY YODA BLUEBALL</h4>
-                <p class="card-item__licence">STAR WARS</p>
-                <p class="card-item__price">precio: $ 1799,99</p>
+    <div class="cart-table">
+        <div class="tab-header">
+          <h2><b>DETALLE DE PRODUCTO</b></h2>
+          <h2><b>CANTIDAD</b></h2>
+          <h2><b>TOTAL</b></h2>
+        </div>
+        <div class="items">
+          <% items.forEach((item, i) => { %>
+            <div class="tab-item">
+              <div class="cart-item">
+                <img class="cart-picture" src=<%= item.Product.image_front %> alt=<%= item.Product.product_description %>>
+                <div class="cart-info">
+                  <h4 class="card-item__name"><%= item.Product.product_name %></h4>
+                  <h4 class="card-item__licence"><%= item.Product.License.license_name %></h4>
+                  <p class="card-item__price">precio: $ <%= item.Product.price %></p>
+                </div>
               </div>
-            </div>
-          </td>
-
-          <td>
-            <div class="numeric-input">
-              <input class="item_number" type="number" id="numero" value="0" min="0" max="100">
-            </div>
-          </td>
-        
-          <td>$ 3599,98</td>
-        </tr>
-        
-        
-        
-    
-        <tr>
-          <td> 
-            <div class="cart-item">
-              <img class="cart-picture" src="../../public/img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto">
-          
               <div class="cart-info">
-                <h4 class="card-item__name">PIDGEOTTO</h4>
-                  <p class="card-item__licence">POKEMON</p>
-                  <p class="card-item__price">Precio unitario: $ 1799,99</p>
+                <p>
+                 <%= item.cantidad %> 
+                </p>
+                
               </div>
+              <div class="cart-info">
+                <p>
+                  $<%= item.total %>
+                </p>
+                
+              </div>
+
             </div>
-          </td>
+            <% }) %>
+        </div>
+    </div>
 
+  </div>
 
-          <td>
-            <div class="numeric-input">
-              <input class="item_number" type="number" id="numero" value="0" min="0" max="100">
-            </div>
-          </td>
-          <td>$ 1799,99</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="resumen-container">
-      <h2 class="resumen-titulo">RESUMEN</h2>
+  <div class="contenedor-resumen">
+  <div class="resumen-title"><h1>RESUMEN</h1></div>
+  </div>
+  <div class="resumen-container">  
       <div class="resumen-columnas">
         <div class="resumen-fila">
-          <div class="resumen-columna1">CANTIDAD DE ELEMENTOS</div>
-          <div class="resumen-columna2">3</div>
+          <div class="resumen-columna1"><b>CANTIDAD DE ELEMENTOS</b></div>
+          <div class="resumen-columna2"><%= cantidad_total %></div>
         </div>
         <div class="resumen-fila">
-          <div class="resumen-columna1">SUBTOTAL</div>
-          <div class="resumen-columna2">$5.399,97</div>
+          <div class="resumen-columna1"><b>SUBTOTAL</b></div>
+          <div class="resumen-columna2">$ <%= precio_total %></div>
         </div>
         <div class="resumen-fila">
-          <div class="resumen-columna1">ENVIO</div>
-          <div class="resumen-columna2">$0,00</div>
+          <div class="resumen-columna1"><b>ENVIO</b></div>
+          <div class="resumen-columna2">$ 0,00</div>
         </div>
         <hr class="resumen-linea-roja">
         <div class="resumen-fila">
-          <div class="resumen-columna1">TOTAL</div>
-          <div class="resumen-columna2">$5.399,97</div>
+          <div class="resumen-columna1"><b>TOTAL</b></div>
+          <div class="resumen-columna2">$ <%= precio_total %></div>
         </div>
       </div>
-      <button class="ir-a-pagar">IR A PAGAR</button>
+      <button class="ir-a-pagar"><b>IR A PAGAR</b></button>
     </div>
-  </div>
-</div>
+
+
+
 <%- include('partials/footer'); -%>

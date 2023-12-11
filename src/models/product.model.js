@@ -61,7 +61,7 @@ Product.init({
   modelName: "Product"
 });
 
-Product.hasOne(License, { foreignKey: 'license_id' });
+Product.hasOne(License, { foreignKey: 'license_id', sourceKey: "license_id" });
 Product.hasOne(Category, { foreignKey: 'category_id' });
 
 module.exports = Product;

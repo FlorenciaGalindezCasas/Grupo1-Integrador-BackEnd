@@ -30,6 +30,6 @@ Cart.init({
 });
 
 
-Cart.hasOne(Product, { foreignKey: "product_id" });
+Cart.hasOne(Product, { foreignKey: "product_id", sourceKey: "product_id" });
 
 module.exports = Cart;

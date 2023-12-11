@@ -5,36 +5,10 @@ const adminController = {
   getCreateView: (req, res) => res.send("Pagina de creacion de admins"),
   create: async (req, res) => {
     try {
-      const { 
-        product_name,
-        product_description,
-        price,
-        stock,
-        discount,
-        sku,
-        dues,
-        image_front,
-        image_back,
-        license_id,
-        category_id
-      } = req.body;
-  
-      const newProduct = await Product.create({
-        product_name,
-        product_description,
-        price,
-        stock,
-        discount,
-        sku,
-        dues,
-        image_front,
-        image_back,
-        license_id,
-        category_id
-      });
-      
-      return res.status(201).json({ product: newProduct });
+      const newProduct = await Product.create(req.body);
+      return res.status(201).json( newProduct );
     } catch (error) {
+      console.error(error.message);
       return res.status(500).send('Internal server error');
     }
   },

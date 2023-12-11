@@ -24,11 +24,11 @@
     </div>
 
     <div>
-      <label class="search-content"> FILTRAR </label><br/>
+      <label class="search-content"> FILTRAR </label>
       <div class="filtros">
-        <label class="new-content"><input type="checkbox" id="box1" value="1" /> NUEVOS </label></br>
-        <label class="new-content"><input type="checkbox" id="box1" value="2" /> OFERTAS </label></br>
-        <label class="new-content"><input type="checkbox" id="box1" value="3" /> EDICIÓN ESPECIAL </label></br>
+        <label class="new-content"><input type="checkbox" id="box1" value="1" /> NUEVOS </label>
+        <label class="new-content"><input type="checkbox" id="box1" value="2" /> OFERTAS </label>
+        <label class="new-content"><input type="checkbox" id="box1" value="3" /> EDICIÓN ESPECIAL </label>
         <label class="new-content"><input type="checkbox" id="box1" value="4" /> FAVORITOS </label>
       </div>
     </div>
@@ -39,7 +39,7 @@
     <div class="container-cards">
       <% items.forEach((item, i) => { %>
       <article class="card-item">
-        <a class="card-item__link" href="/shop/item/<%= item.id %>">
+        <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
           <picture class="card-item__cover">
             <span class="card-item__tag">Nuevo</span>
             <img class="card-item__img--front" src=<%= item.image_front %> alt=<%= item.product_description %>>
