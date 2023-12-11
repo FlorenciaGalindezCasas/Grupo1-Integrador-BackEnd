@@ -1,38 +1,34 @@
-const fs = require("fs");
-const Product = require('../models/product.model');
-const Category = require('../models/category.model');
-const License = require('../models/license.model');
-const Cart = require("../models/cart.model")
-
 const shopController = {
   getShopView: async (req, res) => {
-    try {
+    /* try {
       const products = await Product.findAll({
         include: [License, Category]
       });
 
       return res.status(200).render("shop", {
-        items: products
+        items: products,
+        title: "Shop"
       });
     } catch (error) {
       return res.status(500).send({error})
-    }
+    } */
   },
   getItem: async (req, res) => {
-    try {
+    /* try {
       const item = await Product.findByPk(req.params.id)
       if (!item) {
       return res.status(404).json({ error: 'Product not found' });
     }
     return res.status(200).render("item", {
-      item 
+      item,
+      title: "Item"
     });      
     } catch (error) {
       return res.status(500).send("Error")
-    }
+    } */
   },
   addItemToCart: async (req, res) => {
-    try {
+    /* try {
       const productID = +req.params.id;
 
       const cantidad = +req.body.cantidad
@@ -56,48 +52,10 @@ const shopController = {
     } catch (error) {
        console.error(error);
        return res.status(500).json({ error });
-    }
+    } */
   },
-  getCartView: async (req, res) => {
-    try {
-      const compras = await Cart.findAll({
-        include: [
-          {
-            model: Product,
-            include: [License, Category]
-          }
-        ]
-      });
-
-      let cantidad_total = 0;
-      compras.map(item => cantidad_total += item.cantidad);
-
-      let precio_total = 0;
-       
-      compras.map(item => precio_total += +item.total)
-
-      return res.redirect("/cart");
-
-/*       return res.status(200).render("carrito", {
-        items: compras,
-        cantidad_total,
-        precio_total
-      }) */
-    } catch (error) {
-      res.status(500).json({ error });
-    }
-  },
-  confirmPurchase: (req, res) => {
-    try {
-      return res.status(200).render("carrito", {
-        items: null,
-        cantidad_total: 0,
-        precio_total: 0
-      });
-    } catch (error) {
-      res.status(500).json({ error });
-    }
-  }
+  getCartView: (req, res) => res.render("carrito"),
+  confirmPurchase: (req, res) => res.render("carrito")
 };
 
 module.exports = shopController;

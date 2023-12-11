@@ -545,6 +545,10 @@ iconify-icon {
    font-size: 1.3rem;
  }
 
+ .cart-info input{
+   width:25%
+ }
+
  .cart-picture {
    height: 118px;
    width: auto;
