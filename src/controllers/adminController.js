@@ -1,4 +1,4 @@
-const { getAll } = require('../models/product.model');
+const { getAll, createProduct } = require('../models/product.model');
 
 const adminController = {
   getAdminView: async (req, res) => {
@@ -13,17 +13,36 @@ const adminController = {
       return res.status(500).send(`Server error: ${error}`);
     }
   },
-  getCreateView: (req, res) => res.send("Pagina de creacion de admins"),
+  getCreateView: (req, res) => res.render("create"),
   create: async (req, res) => {
-    /* try {
-      const newProduct = await Product.create(req.body);
-      return res.status(201).json( newProduct );
+    try {
+      const item = await createProduct(req.body);
+
+      return res.status(200).render("item", {
+        item,
+        title: "Item"
+      });
     } catch (error) {
-      console.error(error.message);
-      return res.status(500).send('Internal server error');
-    } */
+      return res.status(500).send(`Server error: ${error}`);
+    }
   },
-  getUpdateView: (req, res) => res.send(`Pagina de edicion de admin con ID: ${req.params.id}`),
+  getUpdateView: async (req, res) => {
+    try {
+      const {id} = req.params;
+      const [item] = await getOne(+id);
+
+      if (item.error) {
+        throw new Error (result.message);
+      }
+
+      return res.status(200).render("item", {
+        item,
+        title: "Item"
+      })
+    } catch (error) {
+      return res.status(500).send(`Server error: ${error}`);
+    }
+  },
   update: (req, res) => res.send(`Ruta para confirmar la edicion del admin con ID: ${req.params.id}`),
   remove: (req, res) => res.send(`Ruta para confirmar la eliminacion del admin con ID: ${req.params.id}`),
 };
