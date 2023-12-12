@@ -1,5 +1,18 @@
+const { getAll } = require('../models/product.model');
+
 const adminController = {
-  getAdminView: (req, res) => res.send("Pagina de admin"),
+  getAdminView: async (req, res) => {
+    try {
+      const result = await getAll();
+      
+      return res.status(200).render("admin", {
+        items: result,
+        title: "Admin"
+      })
+    } catch (error) {
+      return res.status(500).send(`Server error: ${error}`);
+    }
+  },
   getCreateView: (req, res) => res.send("Pagina de creacion de admins"),
   create: async (req, res) => {
     /* try {
