@@ -54,7 +54,9 @@ const shopController = {
        return res.status(500).json({ error });
     } */
   },
-  getCartView: (req, res) => res.render("carrito"),
+  getCartView: (req, res) => res.render("carrito", {
+    title: "Cart"
+  }),
   confirmPurchase: (req, res) => res.render("carrito")
 };
 
