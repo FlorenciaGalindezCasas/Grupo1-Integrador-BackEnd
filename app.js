@@ -18,7 +18,7 @@ app.use(methodOverride('_method'));
 
 require("dotenv").config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.use("/", mainRoutes);
 app.use("/admin", adminRoutes);
