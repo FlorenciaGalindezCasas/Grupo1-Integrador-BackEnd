@@ -1,4 +1,4 @@
-const { getAll, createProduct } = require('../models/product.model');
+const { getAll, createProduct, editProduct } = require('../models/product.model');
 
 const adminController = {
   getAdminView: async (req, res) => {
@@ -16,7 +16,7 @@ const adminController = {
   getCreateView: (req, res) => res.render("create"),
   create: async (req, res) => {
     try {
-      const item = await createProduct(req.body);
+      const [item] = await createProduct(req.body);
 
       return res.status(200).render("item", {
         item,
@@ -35,7 +35,7 @@ const adminController = {
         throw new Error (result.message);
       }
 
-      return res.status(200).render("item", {
+      return res.status(200).render("edit", {
         item,
         title: "Item"
       })
@@ -43,7 +43,17 @@ const adminController = {
       return res.status(500).send(`Server error: ${error}`);
     }
   },
-  update: (req, res) => res.send(`Ruta para confirmar la edicion del admin con ID: ${req.params.id}`),
+  update: async (req, res) => {
+    try {
+      const {id} = req.params;
+
+      const [item] = await editProduct(+id, req.body);
+
+      return res.status(200).json({item})
+    } catch (error) {
+      return res.status(500).send(`Server error: ${error}`);
+    }
+  },
   remove: (req, res) => res.send(`Ruta para confirmar la eliminacion del admin con ID: ${req.params.id}`),
 };
 

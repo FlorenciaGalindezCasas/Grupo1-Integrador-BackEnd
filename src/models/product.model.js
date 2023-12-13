@@ -1,5 +1,11 @@
 const { connection } = require('../config/connection');
 
+const getByIdQuery =
+  'SELECT * FROM product, license, category ' + 
+  'WHERE product_id = ? ' +
+  'AND product.license_id = license.license_id ' + 
+  'AND product.category_id = category.category_id;';
+
 const getAll = async () => {
   try {
     const [rows] = await connection.query(
@@ -20,7 +26,7 @@ const getAll = async () => {
 const getOne = async (id) => {
   try {
     const [rows] = await connection.query(
-      'SELECT * FROM product, license, category WHERE product_id = ? AND product.license_id = license.license_id AND product.category_id = category.category_id;',
+      getByIdQuery,
       id
     );
 
@@ -33,7 +39,7 @@ const getOne = async (id) => {
   } finally {
     connection.releaseConnection();
   }
-}
+};
 
 const createProduct = async (body) => {
   try {
@@ -84,12 +90,12 @@ const createProduct = async (body) => {
       ]
     );
 
-    const itemCreated = await connection.query(
-      'SELECT * FROM product, license, category WHERE product_id = ? AND product.license_id = license.license_id AND product.category_id = category.category_id;',
+    const createdItem = await connection.query(
+      getByIdQuery,
       row.insertId
     );
     
-    return itemCreated;
+    return createdItem;
   } catch (err) {
     return {
       error: true,
@@ -98,10 +104,47 @@ const createProduct = async (body) => {
   } finally {
     connection.releaseConnection();
   }
-}
+};
+
+const editProduct = async (id, body) => {
+  try {
+    const set = Object.keys(body)
+      .map(key => `${key} = ?`)
+      .join(', ');
+
+    const values = [...Object.values(body), id];
+
+    const [row] = await connection.query(
+      `UPDATE product SET ${set} WHERE product_id = ?`,
+      values
+    );
+
+    if (row.affectedRows === 0) {
+      return {
+        error: true,
+        message: `No se modificó ningún campo`
+      }
+    }
+
+    const editedItem = connection.query(
+      getByIdQuery,
+      id
+    );
+
+    return editedItem;
+  } catch (err) {
+    return {
+      error: true,
+      message: `'Surgió un error: ${err}`
+    }
+  } finally {
+    connection.releaseConnection();
+  }
+};
 
 module.exports = {
   getAll,
   getOne,
-  createProduct
+  createProduct,
+  editProduct
 };
