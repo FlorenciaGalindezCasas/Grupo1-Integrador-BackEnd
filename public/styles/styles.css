@@ -614,4 +614,163 @@ iconify-icon {
    display: table;
    clear: both;
  }
+
+/*  LOGIN  */
+
+.body-login{
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+}
+
+.login-container{
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+   justify-content: center !important;
+   gap: 40px;
+   margin: 10%
+}
+
+.form{
+   display:flex;
+   flex-direction: column;
+   text-align:center;
+   gap: 35px;
+   font-size: 1.5rem;
+}
  
+.form label{
+   display:flex; 
+   align-items: center;
+   justify-content: space-between !important;
+
+}
+
+.form input{
+   border:none;
+   border-bottom: 3px solid var(--primary-solid);
+   width:75%;
+   &:focus {
+      outline: none;
+   }
+   &:active {
+      outline: none; 
+   }
+}
+
+form{
+   width:100%
+}
+.btn-login, .checkbox{
+   display:flex;
+   align-items: center !important;
+   justify-content: center;
+}
+
+.btn-login{
+   gap: 20px;
+}
+
+.btn-login button{
+   background-color: var(--primary-solid);;
+   color: white;
+   padding: 10px 0; 
+   border: none;
+   cursor: pointer;
+   width: 30%;
+   box-sizing: border-box;
+   font-size:1.5rem;
+}
+
+.login-title{
+   font-weight: bold;
+   font-size: 4rem;
+}
+
+/* ADMIN */
+
+.container-chico{
+   display:flex;
+   flex-direction:column;
+   gap: 30px;
+   margin-top:3%
+}
+
+.op{
+   display:flex;
+   align-items: center;
+   justify-content: space-between
+}
+
+.icon-search, .icon-remove img,.icon-pencil img{
+   border:none;
+   background: none;
+   width:25px
+}
+
+.search{
+   display:flex;
+   align-items:center
+}
+
+.tabla-list{
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+   gap:20px
+}
+
+.thead{
+   display:flex;
+   justify-content: space-between
+}
+
+.admin-title{
+   font-size: 3rem
+}
+
+/* EDIT */
+
+.body-edit{
+   padding: 3%
+}
+
+.container-edit{
+   display:flex;
+   flex-direction: column;
+   align-items:center;
+   margin: 3% 0 0 3%;  
+}
+
+.form-edit{
+   display:flex;
+   flex-direction: column;
+   gap:20px;
+   font-size: 1.5rem;
+}
+
+.form-edit div{
+   display:flex;
+   gap: 20px
+}
+
+.form-edit input{
+   border:none;
+   border-bottom: 3px solid var(--primary-solid);
+   &:focus {
+      outline: none;
+   }
+   &:active {
+      outline: none; 
+   }
+}
+
+textarea{
+   width:100%
+}
+
+.deta{
+   display:flex;
+   justify-content: space-between
+}
