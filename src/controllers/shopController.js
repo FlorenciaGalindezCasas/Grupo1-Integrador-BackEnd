@@ -1,63 +1,44 @@
+const { getAll, getOne } = require('../models/product.model');
+
 const shopController = {
   getShopView: async (req, res) => {
-    /* try {
-      const products = await Product.findAll({
-        include: [License, Category]
-      });
+    try {
+      const result = await getAll();
 
+      if (result.error) {
+        throw new Error (result.message);
+      }
+      
       return res.status(200).render("shop", {
-        items: products,
+        items: result,
         title: "Shop"
-      });
+      })
     } catch (error) {
-      return res.status(500).send({error})
-    } */
+      return res.status(500).send(`Server error: ${error}`)
+    }
   },
   getItem: async (req, res) => {
-    /* try {
-      const item = await Product.findByPk(req.params.id)
-      if (!item) {
-      return res.status(404).json({ error: 'Product not found' });
-    }
-    return res.status(200).render("item", {
-      item,
-      title: "Item"
-    });      
-    } catch (error) {
-      return res.status(500).send("Error")
-    } */
-  },
-  addItemToCart: async (req, res) => {
-    /* try {
-      const productID = +req.params.id;
+    try {
+      const {id} = req.params;
+      const [item] = await getOne(+id);
 
-      const cantidad = +req.body.cantidad
-      
-      const product = await Product.findByPk(productID)
-      if (!product) {
-        return res.status(404).json({ error: "Product not found" });
+      if (item.error) {
+        throw new Error (result.message);
       }
 
-       const compra = await Cart.create({
-        product_id: productID,
-        cantidad: cantidad,
-        total: cantidad*product.price 
+      return res.status(200).render("item", {
+        item,
+        title: "Item"
       })
-      
-      return res.status(201).json({
-        compra,
-        message: "Producto agregado con exito"
-      })
-
     } catch (error) {
-       console.error(error);
-       return res.status(500).json({ error });
-    } */
+      return res.status(500).send(`Server error: ${error}`);
+    }
   },
+  addItemToCart: async (req, res) => res.send('Se agregó el producto al carrito!'),
   getCartView: (req, res) => res.render("carrito", {
     title: "Cart"
   }),
-  confirmPurchase: (req, res) => res.render("carrito")
+  confirmPurchase: (req, res) => res.render("Se confirmo la compra!")
 };
 
 module.exports = shopController;
