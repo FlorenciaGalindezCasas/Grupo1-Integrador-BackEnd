@@ -1,0 +1,51 @@
+<%- include('partials/metadata'); -%> <%- include('partials/header'); -%>
+<div class="body-edit">
+  <h1 class="login-title">EDITAR ITEM</h1>
+  <div class="container-edit" >
+    <form class="form-edit" action="" method="post" style="width: 50%;">
+        <div>
+            <label for="">Categoría:
+                <select name="" id="">
+                    <option value="">.</option>
+                    <option value="">Funkos</option>
+                    <option value="">Remeras</option>
+                </select>
+            </label>
+            <label for="">Licencia:
+                <select name="" id="">
+                    <option value="">.</option>
+                    <option value="">HARRY POTTER</option>
+                    <option value="">STAR WARS</option>
+                </select>
+            </label>
+        </div>
+        <div >
+            <label for=""style="width: 100%;" >Nombre del producto: <input type="text" style="width: 78.5%;"></label>
+        </div>
+        <div>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Descripción del producto"></textarea>
+        </div>
+        <div class="deta">
+            <label for="">SKU: <input type="text"></label>
+
+            <label for="">Precio: $<input type="text"></label>
+
+            <label for="">Stock: <input type="number" min="0" max="1000">unidades</label>
+        </div>
+        <div>
+            <label for="">Descuento: <input type="number" min="0" max="100" step="5">%</label>
+            <label for="">Cuotas:
+                <select name="" id="">
+                    <option value="">Sin cuotas</option>
+                    <option value="">3 cuotas</option>
+                    <option value="">6 cuotas</option>
+                </select></label</label>
+        </div>
+        <div>
+            <label for="">Imagenes: <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,video/*,video/mp4,video/avi,video/webm,video/x-ms-wmv,video/x-flv,video/mpeg,video/quicktime,video/x-m4v" style="border: none;"></label>
+        </div>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer'); -%>

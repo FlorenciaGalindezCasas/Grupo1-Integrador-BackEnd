@@ -1,6 +1,7 @@
 const { getAll, createProduct, editProduct } = require('../models/product.model');
 
 const adminController = {
+  
   getAdminView: async (req, res) => {
     try {
       const result = await getAll();

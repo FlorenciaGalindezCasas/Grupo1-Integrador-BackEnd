@@ -1,0 +1,74 @@
+<%- include('partials/metadata'); -%> <%- include('partials/header'); -%>
+<div class="fondo">
+  <div class="container" style="width: 100%">
+    <div class="container-chico" style="width: 100%">
+      <form method="GET" action="" class="mb-3">
+        <div class="row edit">
+          <div class="search">
+            <input
+              type="text"
+              class="form-control"
+              id="filtro"
+              name="filtro"
+              placeholder="código, nombre o categoría "
+              value=""
+            />
+            <button class="icon-search" type="submit">
+              <img
+                src="../../../public/img/icons/search_icon.svg"
+                alt="icono de search"
+              />
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="op">
+        <div>
+          <h1 class="admin-title"><b>LISTADO DE PRODUCTOS</b></h1>
+        </div>
+        <div>
+          <h3>
+            AGREGAR <a href=""><i class="fa fa-plus"></i></a>
+          </h3>
+        </div>
+      </div>
+
+      <div  style="width: 100%">
+          <table class="tabla-list" style="width: 100%">
+            <thead style="width: 100%" >
+              <tr class="thead">
+                <th>ID</th>
+                <th>Código</th>
+                <th>Nombre del producto</th>
+                <th>Categoría</th>
+                <th></th>
+                <th></th>
+     
+              </tr>
+            </thead>
+            <tbody style="width: 100%">
+              <tr class="thead">
+                <td>id</td>
+                <td>codigo</td>
+                <td>nombre</td>
+                <td>categoria</td>
+                <td>
+                  <a class="icon-pencil"
+                    ><img
+                      src="public/img/icons/edit_pencil.svg"
+                      alt="icono de editar"
+                  /></a>
+                  <a class="icon-remove"
+                    ><img
+                      src="public/img/icons/delete_trash.svg"
+                      alt="icono de delete"
+                  /></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer'); -%>
