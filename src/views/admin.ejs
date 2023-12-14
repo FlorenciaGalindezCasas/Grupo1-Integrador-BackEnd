@@ -28,7 +28,7 @@
         </div>
         <div>
           <h3>
-            AGREGAR <a href=""><i class="fa fa-plus"></i></a>
+            <a href="admin/create">AGREGAR <i class="fa fa-plus"></i></a>
           </h3>
         </div>
       </div>
@@ -47,13 +47,14 @@
               </tr>
             </thead>
             <tbody style="width: 100%">
+            <% items.forEach(item => { %>
               <tr class="thead">
-                <td>id</td>
-                <td>codigo</td>
-                <td>nombre</td>
-                <td>categoria</td>
+                <td><%= item.product_id %></td>
+                <td><%= item.sku %></td>
+                <td><%= item.product_name %></td>
+                <td><%= item.category_id %></td>
                 <td>
-                  <a class="icon-pencil"
+                  <a href="admin/edit/<%= item.product_id %>" class="icon-pencil"
                     ><img
                       src="public/img/icons/edit_pencil.svg"
                       alt="icono de editar"
@@ -65,6 +66,7 @@
                   /></a>
                 </td>
               </tr>
+            <% }) %>
             </tbody>
           </table>
         </div>

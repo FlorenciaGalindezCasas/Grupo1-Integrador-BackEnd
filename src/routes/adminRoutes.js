@@ -13,7 +13,7 @@ router.get("/", getAdminView);
 router.get("/create", getCreateView);
 router.post("/create", create);
 router.get("/edit/:id", getUpdateView);
-router.get("/edit", update);
+router.put("/edit/:id", update);
 router.delete("/delete/:id", remove);
 
 module.exports = router;

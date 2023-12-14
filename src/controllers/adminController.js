@@ -1,4 +1,4 @@
-const { getAll, createProduct, editProduct } = require('../models/product.model');
+const { getAll, getOne, createProduct, editProduct } = require('../models/product.model');
 
 const adminController = {
   
@@ -14,7 +14,9 @@ const adminController = {
       return res.status(500).send(`Server error: ${error}`);
     }
   },
-  getCreateView: (req, res) => res.render("create"),
+  getCreateView: (req, res) => res.render("create", {
+    title: "Create"
+  }),
   create: async (req, res) => {
     try {
       const [item] = await createProduct(req.body);

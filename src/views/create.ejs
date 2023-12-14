@@ -2,7 +2,7 @@
 <div class="body-edit">
   <h1 class="login-title">CREAR NUEVO ITEM</h1>
   <div class="container-edit" >
-    <form class="form-edit" action="" method="post" style="width: 50%;">
+    <form class="form-edit" action="shop/item/:id" method="post" style="width: 50%;">
         <div>
             <label for="">Categoría:
                 <select name="" id="">
@@ -42,8 +42,12 @@
                 </select></label</label>
         </div>
         <div>
-            <label for="">Imagenes: <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,video/*,video/mp4,video/avi,video/webm,video/x-ms-wmv,video/x-flv,video/mpeg,video/quicktime,video/x-m4v" style="border: none;"></label>
+            <label for="">Imagenes: <input type="file" id="fileInput" accept="image/*,video/*" style="border: none;"></label>
         </div>
+        <div class="btn-login">
+           <button type="submit">Agregar producto</button> 
+           <button type="reset">Limpiar</button>
+        </div>        
     </form>
   </div>
 </div>
