@@ -16,7 +16,7 @@ const getAll = async () => {
   } catch (err) {
     return {
       error: true,
-      message: `'Surgió un error: ${err}`
+      message: `Surgió un error: ${err}`
     }
   } finally {
     connection.releaseConnection();
@@ -34,7 +34,7 @@ const getOne = async (id) => {
   } catch (err) {
     return {
       error: true,
-      message: `'Surgió un error: ${err}`
+      message: `Surgió un error: ${err}`
     }
   } finally {
     connection.releaseConnection();
@@ -90,7 +90,7 @@ const createProduct = async (body) => {
       ]
     );
 
-    const createdItem = await connection.query(
+    const [createdItem] = await connection.query(
       getByIdQuery,
       row.insertId
     );
@@ -99,7 +99,7 @@ const createProduct = async (body) => {
   } catch (err) {
     return {
       error: true,
-      message: `'Surgió un error: ${err}`
+      message: `Surgió un error: ${err}`
     }
   } finally {
     connection.releaseConnection();
@@ -123,10 +123,10 @@ const editProduct = async (id, body) => {
       return {
         error: true,
         message: `No se modificó ningún campo`
-      }
+      };
     }
 
-    const editedItem = connection.query(
+    const [editedItem] = connection.query(
       getByIdQuery,
       id
     );
@@ -135,7 +135,29 @@ const editProduct = async (id, body) => {
   } catch (err) {
     return {
       error: true,
-      message: `'Surgió un error: ${err}`
+      message: `Surgió un error: ${err}`
+    };
+  } finally {
+    connection.releaseConnection();
+  }
+};
+
+const deleteProduct = async (id) => {
+  try {
+    const [row] = await connection.query('DELETE FROM product WHERE product_id = ?', id);
+
+    if (row.affectedRows === 0) {
+      return {
+        error: true,
+        message: `No se modificó ningún campo`
+      };
+    }
+
+    return row;
+  } catch (err) {
+    return {
+      error: true,
+      message: `Surgió un error: ${err}`
     }
   } finally {
     connection.releaseConnection();
@@ -146,5 +168,6 @@ module.exports = {
   getAll,
   getOne,
   createProduct,
-  editProduct
+  editProduct,
+  deleteProduct
 };
