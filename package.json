@@ -20,6 +20,7 @@
   "homepage": "https://github.com/FlorenciaGalindezCasas/Grupo1-Itegrador-BackEnd#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "boxicons": "^2.1.4",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",

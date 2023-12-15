@@ -774,3 +774,14 @@ textarea{
    display:flex;
    justify-content: space-between
 }
+
+.btn-edit input{
+   background-color: var(--primary-solid);;
+   color: white;
+   padding: 10px 0; 
+   border: none;
+   cursor: pointer;
+   width: 30%;
+   box-sizing: border-box;
+   font-size:1.5rem;
+}

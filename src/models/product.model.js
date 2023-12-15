@@ -126,7 +126,7 @@ const editProduct = async (id, body) => {
       };
     }
 
-    const [editedItem] = connection.query(
+    const editedItem = connection.query(
       getByIdQuery,
       id
     );

@@ -2,50 +2,88 @@
 <div class="body-edit">
   <h1 class="login-title">EDITAR ITEM</h1>
   <div class="container-edit" >
-    <form class="form-edit" action="../../shop/item/:id" method="put" style="width: 50%;">
+    <form class="form-edit" method="POST" action="./<%= item.product_id %>?_method=PUT" enctype="multipart/form-data" style="width: 50%;">
         <div>
-            <label for="">Categoría:
-                <select name="" id="">
-                    <option value="">.</option>
-                    <option value="">Funkos</option>
-                    <option value="">Remeras</option>
+            <label for="category_id">Categoría:
+                <select name="category_id" id="">
+                    <% if(item.category_id == 1){ %>
+                    <option value="1" selected>Figuras coleccionables</option>
+                    <option value="2">Llaveros</option>
+                    <option value="3">Remeras</option>
+                    <% } %>
+                    <% if(item.category_id == 2){ %>
+                    <option value="1" >Figuras coleccionables</option>
+                    <option value="2"selected>Llaveros</option>
+                    <option value="3">Remeras</option>
+                    <% } %>   
+                    <% if(item.category_id == 3){ %>
+                    <option value="1" >Figuras coleccionables</option>
+                    <option value="2">Llaveros</option>
+                    <option value="3"selected>Remeras</option>
+                    <% } %>                
                 </select>
             </label>
-            <label for="">Licencia:
-                <select name="" id="">
-                    <option value="">.</option>
-                    <option value="">HARRY POTTER</option>
-                    <option value="">STAR WARS</option>
+            <label for="license_id">Licencia:
+                <select name="license_id" required>
+                    <% if(item.license_id == 1){ %>
+                    <option value="1"selected>HARRY POTTER</option>
+                    <option value="2" >POKEMON</option>
+                    <option value="3">STAR WARS</option>
+                    <% } %>
+                    <% if(item.license_id == 2){ %>
+                    <option value="1">HARRY POTTER</option>
+                    <option value="2"selected >POKEMON</option>
+                    <option value="3">STAR WARS</option>
+                    <% } %>
+                    <% if(item.license_id == 3){ %>
+                    <option value="1">HARRY POTTER</option>
+                    <option value="2" >POKEMON</option>
+                    <option value="3"selected>STAR WARS</option>
+                    <% } %>
                 </select>
             </label>
         </div>
         <div >
-            <label for=""style="width: 100%;" >Nombre del producto: <input type="text" style="width: 78.5%;"></label>
+            <label for="product_name"style="width: 100%;" >Nombre del item:</label>
+                <input type="text" name="product_name" id="product_name" value="<%= item.product_name %>" style="width: 78.5%;" required>
+            
         </div>
         <div>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Descripción del producto"></textarea>
+            <textarea name="product_description" id="" cols="30" rows="10" placeholder="<%= item.product_description %>"></textarea>
         </div>
         <div class="deta">
-            <label for="">SKU: <input type="text"></label>
+            <label for="sku">SKU: </label>
+            <input type="text" name="sku" value="<%= item.sku %>" required>
 
-            <label for="">Precio: $<input type="text"></label>
+            <label for="price">Precio: $<input type="text" name="price" value="<%= item.price %>" required></label>
 
-            <label for="">Stock: <input type="number" min="0" max="1000">unidades</label>
+            <label for="stock">Stock: <input type="number" name="stock" min="0" max="1000" value="<%= item.stock %>" required>unidades</label>
         </div>
         <div>
-            <label for="">Descuento: <input type="number" min="0" max="100" step="5">%</label>
+            <label for="discount">Descuento: <input type="number" name="discount" value="<%= item.discount %>"  min="0" max="100" step="5" required>%</label>
             <label for="">Cuotas:
-                <select name="" id="">
+                <select name="cuotas" id="">
                     <option value="">Sin cuotas</option>
                     <option value="">3 cuotas</option>
                     <option value="">6 cuotas</option>
                 </select></label</label>
         </div>
         <div>
-            <label for="">Imagenes: <input type="file" id="fileInput" accept="image/*,video/*" style="border: none;"></label>
+            <label for="image_front">Imagenes: <input name="image_front" id="image_front" type="file" id="fileInput" accept="image/*,video/*" style="border: none;"></label>
         </div>
-        <div class="btn-login">
-           <button type="submit">Modificar producto</button> 
+        <div>
+            <div>
+                <img src="/img<%= item.image_front %>" alt="">
+                <p>Frente</p>
+            </div>
+            <div>
+                <img src="/img<%= item.image_back %>" alt="">
+                <p>Dorso</p>
+            </div>
+        </div>
+        <div class="btn-edit">
+            <input type="submit" value="Modificar Producto">
+            <input type="reset" value="Limpiar">
         </div>    
     </form>
   </div>

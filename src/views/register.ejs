@@ -1,0 +1,31 @@
+<%- include('partials/metadata'); -%> <%- include('partials/header'); -%>
+<div class="body-login">
+  <div class="login-container">
+    <div>
+      <h1 class="login-title"><b>CREA TU CUENTA</b></h1>
+      <p>Completa el formulario para ser parte del mundo de los Funkos</p>
+    </div>
+    <div style="width: 100%">
+      <form class="form" action="" method="post">
+        <label for="">Nombre: <input type="name" placeholder="Jphn" /></label>
+        <label for=""
+          >Apellido: <input type="lastname" placeholder="Doe"
+        /></label>
+        <label for=""
+          >Email: <input type="email" placeholder="johndoe@correo.com"
+        /></label>
+        <label for=""
+          >Contraseña: <input type="password" placeholder="contraseña"
+        /></label>
+        <label for=""
+          >Repita Contraseña: <input type="password" placeholder="contraseña"
+        /></label>
+        <div class="btn-login">
+          <button>Registrar</button>
+          <div class="checkbox"><input type="checkbox" />Acepto <a href="" style="color: #6c86e5">Terminos y Condiciones</a></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer'); -%>

@@ -32,7 +32,7 @@ const adminController = {
   getUpdateView: async (req, res) => {
     try {
       const {id} = req.params;
-      const item = await getOne(+id);
+      const [item] = await getOne(+id);
 
       if (item.error) {
         throw new Error (result.message);
