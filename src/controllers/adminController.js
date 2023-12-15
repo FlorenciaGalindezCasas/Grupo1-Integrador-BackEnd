@@ -21,10 +21,11 @@ const adminController = {
     try {
       const item = await createProduct(req.body);
 
-      return res.status(200).render("item", {
+      /* return res.status(200).render("item", {
         item,
         title: "Item"
-      });
+      }); */
+      return res.status(200).json({ message: "exito", item});
     } catch (error) {
       return res.status(500).send(`Server error: ${error}`);
     }
