@@ -19,13 +19,26 @@ const adminController = {
   }),
   create: async (req, res) => {
     try {
-      const item = await createProduct(req.body);
+      const productObject = {
+      product_name: req.body.product_name,
+      product_description: req.body.product_description,
+      price: req.body.price,
+      stock: req.body.stock,
+      discount: req.body.discount,
+      sku: req.body.sku,
+      dues: req.body.dues,
+      image_front: req.files[0].originalname,
+      image_back: req.files[1].originalname,
+      category_id: req.body.category_id,
+      license_id: req.body.license_id
+      };
 
-      /* return res.status(200).render("item", {
+      const [item] = await createProduct(productObject);
+
+      return res.status(200).render("item", {
         item,
         title: "Item"
-      }); */
-      return res.status(200).json({ message: "exito", item});
+      });
     } catch (error) {
       return res.status(500).send(`Server error: ${error}`);
     }
