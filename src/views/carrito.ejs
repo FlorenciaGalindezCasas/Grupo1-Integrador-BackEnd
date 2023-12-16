@@ -3,67 +3,61 @@
   <h1>CARRITO DE COMPRAS</h1>
 </div>
 
-<div class="cart-container">
-  <div class="cart-table">
-    <div class="tab-header">
-      <h2><b>DETALLE DE PRODUCTO</b></h2>
-      <h2><b>CANTIDAD</b></h2>
-      <h2><b>TOTAL</b></h2>
-    </div>
-    <div class="items">
-      <div class="tab-item">
-        <div class="cart-item">
-          <img
-            class="cart-picture"
-            src="/public/img/star-wars/baby-yoda-1.webp"
-          />
-          <div class="cart-info">
-            <h4 class="card-item__name">BABY YODA BLUEBALL</h4>
-            <h4 class="card-item__licence">STAR WARS</h4>
-            <p class="card-item__price">precio unitario: $ 1799,99</p>
-          </div>
-        </div>
+<table class="cart-container">
+  <thead>
+    <tr class="t-head">
+      <th style="width: 370px;">DETALLE DE PRODUCTO</th>
+      <th>CANTIDAD</th>
+      <th>TOTAL</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="tab-item">
+      <td class="cart-item">
+        <img class="cart-picture" src="/public/img/star-wars/baby-yoda-1.webp" />
         <div class="cart-info">
-          <input type="number" name="" id="" value="2" />
+          <h4 class="card-item__name">BABY YODA BLUEBALL</h4>
+          <h4 class="card-item__licence">STAR WARS</h4>
+          <p class="card-item__price">precio unitario: $ 1799,99</p>
         </div>
+      </td>
+      <td class="cart-cant">
+        <input type="number" name="" id="" value="2" />
+      </td>
+      <td class="cart-info">
+        <p>$ 3599,98</p>
+      </td>
+      <td>
+        <a class="icon-eliminar">
+          <i class='bx bx-x-circle'></i>
+        </a>
+      </td>
+    </tr>
+    <tr class="tab-item">
+      <td class="cart-item">
+        <img class="cart-picture" src="../../public/img/pokemon/pidgeotto-1.webp" />
         <div class="cart-info">
-          <p>$ 3599,98</p>
+          <h4 class="card-item__name">PIDGEOTTO</h4>
+          <h4 class="card-item__licence">POKEMON</h4>
+          <p class="card-item__price">precio unitario: $ 1799,99</p>
         </div>
-        <div>
-          <a class="icon-remove"
-            ><img src="public/img/icons/delete_trash.svg" alt="icono de delete"
-          /></a>
-        </div>
-      </div>
-    </div>
-    <div class="items">
-      <div class="tab-item">
-        <div class="cart-item">
-          <img
-            class="cart-picture"
-            src="../../public/img/icons/delete_trash.svg"
-          />
-          <div class="cart-info">
-            <h4 class="card-item__name">PIDGEOTTO</h4>
-            <h4 class="card-item__licence">POKEMON</h4>
-            <p class="card-item__price">precio unitario: $ 1799,99</p>
-          </div>
-        </div>
-        <div class="cart-info">
-          <input type="number" name="" id="" value="1" />
-        </div>
-        <div class="cart-info">
-          <p>$ 1799,99</p>
-        </div>
-        <div>
-          <a class="icon-remove"
-            ><img src="../../public/img/icons/delete_trash.svg" alt="icono de delete"
-          /></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      </td>
+      <td class="cart-cant">
+        <input type="number" name="" id="" value="1" />
+      </td>
+      <td class="cart-info">
+        <p>$ 1799,99</p>
+      </td>
+      <td>
+        <a class="icon-eliminar">
+          <i class='bx bx-x-circle'></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 <div class="contenedor-resumen">
   <div class="resumen-title"><h1>RESUMEN</h1></div>

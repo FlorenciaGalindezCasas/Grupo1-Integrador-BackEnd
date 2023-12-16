@@ -84,6 +84,12 @@ img {
    width: 100%;
 }
 
+select, .input-bord{
+   height:25px;
+   border-radius: 5px;
+   border: 2px solid black
+}
+
 .container {
     max-width: 1200px;
     min-height: 100vh;
@@ -473,7 +479,7 @@ iconify-icon {
    display:flex;
    flex-direction: column;
    gap: 5px;
-   padding-top:3%
+   padding:3%
 }
 
 .filtros label{
@@ -505,9 +511,10 @@ iconify-icon {
 .tab-item{
    display:flex;
    justify-content: space-between;
-   padding: 20px 100px 20px 15px;
+   padding: 20px 15px 20px 15px;
+   margin:2%; 
    align-items: center;
-   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.4);
+   border: 4px solid rgba(0, 0, 0, 0.1);
    border-radius: 15px
 }
 
@@ -516,11 +523,13 @@ iconify-icon {
    padding-bottom:5px;
    border-bottom: 4px solid var(--primary-solid);
    font-size: 2rem;
-   margin: 5% 0 0 5%;
+   margin: 5% 0 0 7%;
 }
 
+
 .cart-container {
-   padding: 5%;
+   width:100%;
+   padding: 2% 5%;
 }
 
  .cart-table {
@@ -530,7 +539,19 @@ iconify-icon {
    gap: 20px;
  }
 
+ .t-head{
+   margin-bottom: 0%; 
+   display:flex;
+   justify-content: space-between;
+   padding: 15px;
+   margin:0 2%; 
+   align-items: center;
+   border: 4px solid rgba(0, 0, 0, 0.1);
+   border-radius: 10px
+ }
+
  .cart-item{
+   width: 400px;
    display:flex;
    align-items:center;
    gap:5px;
@@ -545,8 +566,16 @@ iconify-icon {
    font-size: 1.3rem;
  }
 
- .cart-info input{
-   width:25%
+ .cart-cant{
+   display:flex;
+   justify-content: center
+ }
+
+ .cart-cant input{
+   
+   width:25%;
+   text-align: center;
+    
  }
 
  .cart-picture {
@@ -558,13 +587,13 @@ iconify-icon {
 
 .resumen-container {
    width: 600px;
-   margin: 1% 5% 5% 0;
+   margin: 1% 7% 5% 0;
    float:right;
    font-size: 1.5rem
  }
  
 .contenedor-resumen{
-   margin: 0 5%;
+   margin: 0 7%;
    text-align: right;
 }
 .resumen-title{
@@ -580,7 +609,7 @@ iconify-icon {
    display:flex;
    flex-direction:column;
    gap:10px;
-   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.4);
+   border: 4px solid rgba(0, 0, 0, 0.1);
    border-radius: 10px;
    padding: 5%;
  }
@@ -608,6 +637,11 @@ iconify-icon {
    box-sizing: border-box;
    font-size:1.5rem
  }
+
+ .icon-eliminar i{
+   font-size: 20px;
+   color:var(--primary-solid);
+}
  
  .clearfix::after {
    content: "";
@@ -662,6 +696,7 @@ iconify-icon {
 form{
    width:100%
 }
+
 .btn-login, .checkbox{
    display:flex;
    align-items: center !important;
@@ -698,6 +733,7 @@ form{
 }
 
 .op{
+   width:85%;
    display:flex;
    align-items: center;
    justify-content: space-between
@@ -711,42 +747,44 @@ form{
 
 .search{
    display:flex;
-   align-items:center
+   align-items:center; 
+   gap: 10px
 }
 
 .tabla-list{
-   display:flex;
-   flex-direction:column;
-   align-items:center;
-   gap:20px
+   padding-left:2%
 }
 
-.thead{
-   display:flex;
-   justify-content: space-between
+.tabla-list tr{
+   text-align:left
+}
+
+.tabla-list td, .tabla-list th{
+   width:150px
 }
 
 .admin-title{
    font-size: 3rem
 }
 
+
+
 /* EDIT */
 
 .body-edit{
-   padding: 3%
+   padding: 2% 5%
 }
 
 .container-edit{
    display:flex;
    flex-direction: column;
-   align-items:center;
-   margin: 3% 0 0 3%;  
+   margin-top: 2%;  
 }
 
 .form-edit{
    display:flex;
    flex-direction: column;
-   gap:20px;
+   gap:30px;
    font-size: 1.5rem;
 }
 
@@ -772,7 +810,12 @@ textarea{
 
 .deta{
    display:flex;
-   justify-content: space-between
+   justify-content: space-between;  
+}
+
+.deta input{
+   width:40%;
+   text-align: center;
 }
 
 .btn-edit input{
@@ -785,3 +828,16 @@ textarea{
    box-sizing: border-box;
    font-size:1.5rem;
 }
+
+.img-edit{
+   display:flex;
+   flex-direction: column
+}
+
+.img-edit p{
+   border-top: 1px solid var(--primary-solid);
+   padding-top: 3%;
+   text-align:center;
+   font-size: 1.5rem
+}
+

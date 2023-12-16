@@ -3,16 +3,18 @@
 <main class="main-container">
 
 	<section class="item_container">
-		<img src=<%= item.image_front %> alt=<%= item.product_description %>>
+		<img src="../../public/img/<%= item.image_front %>" alt=<%= item.product_description %>>
 		<div class="item_info_container">
-			<p><%= item.license_name %></p>
+			<p><%= item.licence_name %></p>
 			<p class="item_subtitle"><%= item.product_name %></p>
 			<p><%= item.product_description %></p>
 			<p class="item_precio">$ <%= item.price %></p>
             <form action="/shop/item/<%= item.product_id %>/add" method="post">
               <div class="numeric-input">
                 <input class="item_number" type="number" name="cantidad" value="0" min="0" max="100">
-                <button type="submit" class="item_add_cart_btn">Agregar al Carrito</button>
+        <div class="btn-edit" style="width: 100%;">
+            <input type="submit" value="Agregar al Carrito">
+        </div>  
               </div>
             </form>
 			<p class="item_promo">Ver métodos de pago - 3 CUOTAS SIN INTERÉS</p>

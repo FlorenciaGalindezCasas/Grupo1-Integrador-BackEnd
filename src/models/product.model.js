@@ -1,15 +1,15 @@
 const { connection } = require('../config/connection');
 
 const getByIdQuery =
-  'SELECT * FROM product, license, category ' + 
+  'SELECT * FROM product, licence, category ' + 
   'WHERE product_id = ? ' +
-  'AND product.license_id = license.license_id ' + 
+  'AND product.licence_id = licence.licence_id ' + 
   'AND product.category_id = category.category_id;';
 
 const getAll = async () => {
   try {
     const [rows] = await connection.query(
-      'SELECT * FROM product, license, category WHERE product.license_id = license.license_id AND product.category_id = category.category_id;'
+      'SELECT * FROM product, licence, category WHERE product.licence_id = licence.licence_id AND product.category_id = category.category_id;'
     );
     
     return rows;
@@ -54,7 +54,7 @@ const createProduct = async (body) => {
       image_front,
       image_back,
       category_id,
-      license_id
+      licence_id
     } = body;
 
     const create_time = new Date();
@@ -72,7 +72,7 @@ const createProduct = async (body) => {
       'image_back,' +
       'create_time,' +
       'category_id,' +
-      'license_id) ' +
+      'licence_id) ' +
       'VALUES(?,?,?,?,?,?,?,?,?,?,?,?);',
       [
         product_name,
@@ -86,7 +86,7 @@ const createProduct = async (body) => {
         image_back,
         create_time,
         category_id,
-        license_id
+        licence_id
       ]
     );
 

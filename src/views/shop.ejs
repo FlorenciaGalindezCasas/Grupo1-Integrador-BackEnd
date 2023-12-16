@@ -3,12 +3,12 @@
 <div class="container shop-container">
   <div class="filter">
     <div>
-      <label class="search-content"> BUSCAR </label>
-      <input placeholder="item o categoria"> 
+      <label class="search-content" > BUSCAR </label>
+      <input class="input-bord" placeholder=" item o categoria"style="margin-top: 3%;"> 
     </div>
     <div>
       <label class="search-content" for="names"> ORDENAR POR</label> 
-      <select style="width: 100%;" name="names" id="names"> 
+      <select style="width: 100%; margin-top: 3%;" name="names" id="names"> 
         <option value="1">Mayor a menor</option> 
         <option value="2">Menor a mayor</option> 
         <option value="3">Desordenado!!!</option> 
@@ -17,9 +17,9 @@
     <div class="row">
       <label class="search-content">PRECIO </label><br/>
       <div class="price">
-        <label class="min-max-content"> MIN</label> <input style="width: 20%;" placeholder="0">
+        <label class="min-max-content"> MIN</label> <input class="input-bord" style="width: 20%; height: 15px;" placeholder="0">
         <span>-</span> 
-        <label class="min-max-content"> MAX </label> <input style="width: 20%;" placeholder="0"> 
+        <label class="min-max-content"> MAX </label> <input class="input-bord" style="width: 20%; height: 15px;" placeholder="0"> 
       </div>
     </div>
 
@@ -43,11 +43,11 @@
         <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
           <picture class="card-item__cover">
             <span class="card-item__tag">Nuevo</span>
-            <img class="card-item__img--front" src=<%= item.image_front %> alt=<%= item.product_description %>>
-            <img class="card-item__img--back" src=<%= item.image_back %> alt="<%= item.product_description %> en caja">
+            <img class="card-item__img--front" src="public/img/<%= item.image_front %>" alt=<%= item.product_description %>>
+            <img class="card-item__img--back" src="public/img/<%= item.image_back %>" alt="<%= item.product_description %> en caja">
           </picture>
           <div class="card-item__content">
-            <p class="card-item__licence"><%= item.license_name %></p>
+            <p class="card-item__licence"><%= item.licence_name %></p>
             <h4 class="card-item__name"><%= item.product_name %></h4>
             <p class="card-item__price"><%= item.price %></p>
             <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>

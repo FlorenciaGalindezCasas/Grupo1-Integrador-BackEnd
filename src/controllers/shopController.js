@@ -5,6 +5,8 @@ const shopController = {
     try {
       const result = await getAll();
 
+      console.log(result[0]);
+
       if (result.error) {
         throw new Error (result.message);
       }
