@@ -41,7 +41,7 @@ const getOne = async (id) => {
   }
 };
 
-const createProduct = async (body) => {
+const createProduct = async (productObject) => {
   try {
     const {
       product_name,
@@ -55,7 +55,7 @@ const createProduct = async (body) => {
       image_back,
       category_id,
       licence_id
-    } = body;
+    } = productObject;
 
     const create_time = new Date();
 
