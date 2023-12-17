@@ -8,95 +8,106 @@ const {
 
 const adminController = {
   getAdminView: async (req, res) => {
-    try {
-      const result = await getAll();
+    const result = await getAll();
 
-      return res.status(200).render("admin", {
-        items: result,
-        title: "Admin",
-      });
-    } catch (error) {
-      return res.status(500).send(`Server error: ${error}`);
+    if (result.error) {
+      return res.status(400).json({ error: result.message });
     }
+
+    return res.status(200).render("admin", {
+      items: result,
+      title: "Admin",
+    });
   },
   getCreateView: (req, res) =>
     res.render("create", {
       title: "Create",
     }),
   create: async (req, res) => {
-    try {
-      const productObject = {
-        product_name: req.body.product_name,
-        product_description: req.body.product_description,
-        price: req.body.price,
-        stock: req.body.stock,
-        discount: req.body.discount,
-        sku: req.body.sku,
-        dues: req.body.dues,
-        image_front: `/products/${req.files[0].filename}`,
-        image_back: `/products/${req.files[1].filename}`,
-        category_id: req.body.category_id,
-        licence_id: req.body.licence_id,
-      };
+    const productObject = {
+      product_name: req.body.product_name,
+      product_description: req.body.product_description,
+      price: req.body.price,
+      stock: req.body.stock,
+      discount: req.body.discount,
+      sku: req.body.sku,
+      dues: req.body.dues,
+      image_front: `/products/${req.files[0].filename}`,
+      image_back: `/products/${req.files[1].filename}`,
+      category_id: req.body.category_id,
+      licence_id: req.body.licence_id,
+    };
 
-      const [item] = await createProduct(productObject);
+    const [item] = await createProduct(productObject);
 
-      return res.status(200).render("item", {
-        item,
-        title: "Item",
-      });
-    } catch (error) {
-      return res.status(500).send(`Server error: ${error}`);
+    if (item !== undefined && item.error) {
+      return res.status(400).json({ error: item.message });
     }
+
+    return res.status(200).render("item", {
+      item,
+      title: "Item",
+    });
   },
   getUpdateView: async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [item] = await getOne(+id);
+    const { id } = req.params;
+    const [item] = await getOne(+id);
 
-      if (item.error) {
-        throw new Error(result.message);
-      }
-
-      return res.status(200).render("edit", {
-        item,
-        title: "Item",
-      });
-    } catch (error) {
-      return res.status(500).send(`Server error: ${error}`);
+    if (item === undefined) {
+      return res.status(404).json({ error: `No se encontró el producto con ID: ${id}`});
     }
+
+    if (item.error) {
+      return res.status(400).json({ error: result.message });
+    }
+
+    return res.status(200).render("edit", {
+      item,
+      title: "Item",
+    });
   },
   update: async (req, res) => {
-    try {
-      const { id } = req.params;
+    const { id } = req.params;
+    const productObject = {
+      product_name: req.body.product_name,
+      product_description: req.body.product_description,
+      price: req.body.price,
+      stock: req.body.stock,
+      discount: req.body.discount,
+      sku: req.body.sku,
+      dues: req.body.dues,
+      image_front: `/products/${req.files[0].filename}`,
+      image_back: `/products/${req.files[1].filename}`,
+      category_id: req.body.category_id,
+      licence_id: req.body.licence_id,
+    };
 
-      const [item] = await editProduct(+id, req.body);
+    const [item] = await editProduct(+id, productObject);
 
-      console.log("Item: ", item);
-
-      return res.status(200).render("item", {
-        item,
-        title: "Item",
-      });
-    } catch (error) {
-      return res.status(500).send(`Server error: ${error}`);
+    if (item !== undefined && item.error) {
+      return res.status(400).json({ error: item.message });
     }
+
+    return res.status(200).render("item", {
+      item,
+      title: "Item",
+    });
   },
   remove: async (req, res) => {
-    try {
-      const { id } = req.params;
+    const { id } = req.params;
 
-      await deleteProduct(+id);
+    const [productToDetele] = await deleteProduct(+id);
 
-      const itemsUpdated = await getAll();
-
-      return res.status(200).render("admin", {
-        items: itemsUpdated,
-        title: "Admin",
-      });
-    } catch (error) {
-      return res.status(500).send(`Server error: ${error}`);
+    if (productToDetele !== undefined && productToDetele.error) {
+      return res.status(400).json({ error: productToDetele.message });
     }
+
+    const itemsUpdated = await getAll();
+
+    return res.status(200).render("admin", {
+      items: itemsUpdated,
+      title: "Admin",
+    });
   },
 };
 

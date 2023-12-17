@@ -6,7 +6,7 @@ const {
 	login,
 	getRegisterView,
 	register, 
-	getLogoutView,
+	logout: logout,
 } = require("../controllers/authController");
 const { connection } = require('../config/connection');
 const validation = require('../middlewares/validation');
@@ -20,7 +20,7 @@ const registerValidation = [
 			return new Promise(async (resolve, reject) => {
 				try {
 					const [userAlreadyExists] = await connection.query(`SELECT * FROM user WHERE email = '${value}';`);
-					if (!userAlreadyExists) {
+					if (userAlreadyExists[0]) {
 						return reject();
 					} else {
 						return resolve();
@@ -55,6 +55,6 @@ router.get("/login", getLoginView);
 router.post("/login", login);
 router.get("/register", getRegisterView);
 router.post("/register", registerValidation, validation, register);
-router.get("/logout", getLogoutView);
+router.get("/logout", logout);
 
 module.exports = router;

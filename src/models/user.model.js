@@ -37,7 +37,7 @@ const createUser = async (userObject) => {
   }
 };
 
-const verifyUser = async (email, password) => {
+const verifyUser = async (email) => {
   try {
     const [userExists] = await connection.query(`SELECT * FROM user WHERE email = ?;`, email);
 
