@@ -1,67 +1,173 @@
-const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/sequelize');
-const License = require('./license.model');
-const Category = require('./category.model');
+const { connection } = require('../config/connection');
 
-class Product extends Model {}
+const getByIdQuery =
+  'SELECT * FROM product, licence, category ' + 
+  'WHERE product_id = ? ' +
+  'AND product.licence_id = licence.licence_id ' + 
+  'AND product.category_id = category.category_id;';
 
-Product.init({
-  product_id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  product_name: {
-    type: DataTypes.STRING(60),
-    allowNull: false,
-    unique: true
-  },
-  product_description: {
-    type: DataTypes.STRING(255),
-    allowNull: false
-  },
-  price: {
-    type: DataTypes.DECIMAL(10, 2),
-    allowNull: false
-  },
-  stock: {
-    type: DataTypes.INTEGER
-  },
-  discount: {
-    type: DataTypes.INTEGER
-  },
-  sku: {
-    type: DataTypes.STRING(30),
-  },
-  dues: {
-    type: DataTypes.INTEGER
-  },
-  image_front: {
-    type: DataTypes.STRING(200),
-  },
-  image_back: {
-    type: DataTypes.STRING(200),
-  },
-  license_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: License,
-      key: "license_id"     
-    }
-  },
-  category_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Category,
-      key: "category_id"
-    }
-  }
-}, {
-  sequelize,
-  modelName: "Product"
-});
+const getAll = async () => {
+	try {
+		const [rows] = await connection.query(
+			'SELECT * FROM product, licence, category WHERE product.licence_id = licence.licence_id AND product.category_id = category.category_id;'
+		);
+    
+		return rows;
+	} catch (err) {
+		return {
+			error: true,
+			message: `Surgió un error: ${err}`
+		};
+	} finally {
+		connection.releaseConnection();
+	}
+};
 
-Product.hasOne(License, { foreignKey: 'license_id' });
-Product.hasOne(Category, { foreignKey: 'category_id' });
+const getOne = async (id) => {
+	try {
+		const [rows] = await connection.query(
+			getByIdQuery,
+			id
+		);
 
-module.exports = Product;
+		return rows;
+	} catch (err) {
+		return {
+			error: true,
+			message: `Surgió un error: ${err}`
+		};
+	} finally {
+		connection.releaseConnection();
+	}
+};
+
+const createProduct = async (productObject) => {
+	try {
+		const {
+			product_name,
+			product_description,
+			price,
+			stock,
+			discount,
+			sku,
+			dues,
+			image_front,
+			image_back,
+			category_id,
+			licence_id
+		} = productObject;
+
+		const create_time = new Date();
+
+		const [row] = await connection.query(
+			'INSERT INTO product' +
+      '(product_name,' +
+      'product_description,' +
+      'price,' +
+      'stock,' +
+      'discount,' +
+      'sku,' +
+      'dues,' +
+      'image_front,' +
+      'image_back,' +
+      'create_time,' +
+      'category_id,' +
+      'licence_id) ' +
+      'VALUES(?,?,?,?,?,?,?,?,?,?,?,?);',
+			[
+				product_name,
+				product_description,
+				price,
+				stock,
+				discount,
+				sku,
+				dues,
+				image_front,
+				image_back,
+				create_time,
+				category_id,
+				licence_id
+			]
+		);
+
+		const [createdItem] = await connection.query(
+			getByIdQuery,
+			row.insertId
+		);
+    
+		return createdItem;
+	} catch (err) {
+		return {
+			error: true,
+			message: `Surgió un error: ${err}`
+		};
+	} finally {
+		connection.releaseConnection();
+	}
+};
+
+const editProduct = async (id, body) => {
+	try {
+		const set = Object.keys(body)
+			.map(key => `${key} = ?`)
+			.join(', ');
+
+		const values = [...Object.values(body), id];
+
+		const [row] = await connection.query(
+			`UPDATE product SET ${set} WHERE product_id = ?`,
+			values
+		);
+
+		if (row.affectedRows === 0) {
+			return {
+				error: true,
+				message: 'No se modificó ningún campo'
+			};
+		}
+
+		const [editedItem] = await connection.query(
+			getByIdQuery,
+			id
+		);
+
+		return editedItem;
+	} catch (err) {
+		return {
+			error: true,
+			message: `Surgió un error: ${err}`
+		};
+	} finally {
+		connection.releaseConnection();
+	}
+};
+
+const deleteProduct = async (id) => {
+	try {
+		const [row] = await connection.query('DELETE FROM product WHERE product_id = ?', id);
+
+		if (row.affectedRows === 0) {
+			return {
+				error: true,
+				message: 'No se modificó ningún campo'
+			};
+		}
+
+		return row;
+	} catch (err) {
+		return {
+			error: true,
+			message: `Surgió un error: ${err}`
+		};
+	} finally {
+		connection.releaseConnection();
+	}
+};
+
+module.exports = {
+	getAll,
+	getOne,
+	createProduct,
+	editProduct,
+	deleteProduct
+};

@@ -1,89 +1,88 @@
-<%- include('partials/metadata'); -%>
-<%- include('partials/header'); -%>
-<div class="cart-title"></div>
-  <h1 class="cart-title">CARRITO DE COMPRAS</h1>
+<%- include('partials/metadata'); -%> <%- include('partials/header'); -%>
+<div class="cart-title">
+  <h1>CARRITO DE COMPRAS</h1>
+</div>
 
-  <div class="cart-container">
-    <table class="cart-table">
-      <thead class="cart-table-header">
-        <tr>
-          <th>DELLATE DE PRODUCTO</th>
-          <th>CANTIDAD</th>
-          <th>TOTAL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td> 
-            <div class="cart-item">
-              <img class="cart-picture" src="../../public/img/star-wars/baby-yoda-1.webp" alt="Figura coleccionable Funko de Yoda">
-              <div class="cart-info">
-                <h4 class="card-item__name">BABY YODA BLUEBALL</h4>
-                <p class="card-item__licence">STAR WARS</p>
-                <p class="card-item__price">precio: $ 1799,99</p>
-              </div>
-            </div>
-          </td>
-
-          <td>
-            <div class="numeric-input">
-              <input class="item_number" type="number" id="numero" value="0" min="0" max="100">
-            </div>
-          </td>
-        
-          <td>$ 3599,98</td>
-        </tr>
-        
-        
-        
-    
-        <tr>
-          <td> 
-            <div class="cart-item">
-              <img class="cart-picture" src="../../public/img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto">
-          
-              <div class="cart-info">
-                <h4 class="card-item__name">PIDGEOTTO</h4>
-                  <p class="card-item__licence">POKEMON</p>
-                  <p class="card-item__price">Precio unitario: $ 1799,99</p>
-              </div>
-            </div>
-          </td>
-
-
-          <td>
-            <div class="numeric-input">
-              <input class="item_number" type="number" id="numero" value="0" min="0" max="100">
-            </div>
-          </td>
-          <td>$ 1799,99</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="resumen-container">
-      <h2 class="resumen-titulo">RESUMEN</h2>
-      <div class="resumen-columnas">
-        <div class="resumen-fila">
-          <div class="resumen-columna1">CANTIDAD DE ELEMENTOS</div>
-          <div class="resumen-columna2">3</div>
+<table class="cart-container">
+  <thead>
+    <tr class="t-head">
+      <th style="width: 370px;">DETALLE DE PRODUCTO</th>
+      <th>CANTIDAD</th>
+      <th>TOTAL</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="tab-item">
+      <td class="cart-item">
+        <img class="cart-picture" src="/public/img/star-wars/baby-yoda-1.webp" />
+        <div class="cart-info">
+          <h4 class="card-item__name">BABY YODA BLUEBALL</h4>
+          <h4 class="card-item__licence">STAR WARS</h4>
+          <p class="card-item__price">precio unitario: $ 1799,99</p>
         </div>
-        <div class="resumen-fila">
-          <div class="resumen-columna1">SUBTOTAL</div>
-          <div class="resumen-columna2">$5.399,97</div>
+      </td>
+      <td class="cart-cant">
+        <input type="number" name="" id="" value="2" />
+      </td>
+      <td class="cart-info">
+        <p>$ 3599,98</p>
+      </td>
+      <td>
+        <a class="icon-eliminar">
+          <i class='bx bx-x-circle'></i>
+        </a>
+      </td>
+    </tr>
+    <tr class="tab-item">
+      <td class="cart-item">
+        <img class="cart-picture" src="../../public/img/pokemon/pidgeotto-1.webp" />
+        <div class="cart-info">
+          <h4 class="card-item__name">PIDGEOTTO</h4>
+          <h4 class="card-item__licence">POKEMON</h4>
+          <p class="card-item__price">precio unitario: $ 1799,99</p>
         </div>
-        <div class="resumen-fila">
-          <div class="resumen-columna1">ENVIO</div>
-          <div class="resumen-columna2">$0,00</div>
-        </div>
-        <hr class="resumen-linea-roja">
-        <div class="resumen-fila">
-          <div class="resumen-columna1">TOTAL</div>
-          <div class="resumen-columna2">$5.399,97</div>
-        </div>
-      </div>
-      <button class="ir-a-pagar">IR A PAGAR</button>
+      </td>
+      <td class="cart-cant">
+        <input type="number" name="" id="" value="1" />
+      </td>
+      <td class="cart-info">
+        <p>$ 1799,99</p>
+      </td>
+      <td>
+        <a class="icon-eliminar">
+          <i class='bx bx-x-circle'></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="contenedor-resumen">
+  <div class="resumen-title"><h1>RESUMEN</h1></div>
+</div>
+<div class="resumen-container">
+  <div class="resumen-columnas">
+    <div class="resumen-fila">
+      <div class="resumen-columna1"><b>CANTIDAD DE ELEMENTOS</b></div>
+      <div class="resumen-columna2">3</div>
+    </div>
+    <div class="resumen-fila">
+      <div class="resumen-columna1"><b>SUBTOTAL</b></div>
+      <div class="resumen-columna2">$ 5.399,97</div>
+    </div>
+    <div class="resumen-fila">
+      <div class="resumen-columna1"><b>ENVIO</b></div>
+      <div class="resumen-columna2">$ 0,00</div>
+    </div>
+    <hr class="resumen-linea-roja" />
+    <div class="resumen-fila">
+      <div class="resumen-columna1"><b>TOTAL</b></div>
+      <div class="resumen-columna2">$ 5.399,97</div>
     </div>
   </div>
+  <button class="ir-a-pagar"><b>IR A PAGAR</b></button>
 </div>
+
 <%- include('partials/footer'); -%>

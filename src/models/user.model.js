@@ -1,35 +1,56 @@
-const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/sequelize');
+const { connection } = require('../config/connection');
+const bcrypt = require('bcrypt');
 
-class User extends Model {}
+const createUser = async (userObject) => {
+	try {
+		const {
+			name,
+			lastname,
+			email,
+			password
+		} = userObject;
+		const create_time = new Date();
 
-User.init({
-  user_id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  name: {
-    type: DataTypes.STRING(16),
-  },
-  lastname: {
-    type: DataTypes.STRING(80)
-  },
-  email: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-    unique: true,
-    validate: {
-      isEmail: true
-    }
-  },
-  password: {
-    type: DataTypes.STRING(32),
-    allowNull: false
-  }
-}, {
-  sequelize,
-  modelName: "User"
-});
+		const hash = await bcrypt.hash(password, 10);
 
-module.exports = User;
+		const [user] = await connection.query(
+			'INSERT INTO user(name, lastname, email, password, create_time) VALUES(?, ?, ?, ?, ?);',
+			[
+				name,
+				lastname,
+				email,
+				hash,
+				create_time
+			]
+		);
+
+		return user;
+	} catch (err) {
+		return {
+			error: true,
+			message: `Surgió un error: ${err}`
+		};
+	} finally {
+		connection.releaseConnection();
+	}
+};
+
+const verifyUser = async (email) => {
+	try {
+		const [userExists] = await connection.query('SELECT * FROM user WHERE email = ?;', email);
+
+		return userExists;
+	} catch (err) {
+		return {
+			error: true,
+			message: `Surgió un error: ${err}`
+		};
+	} finally {
+		connection.releaseConnection();
+	}
+};
+
+module.exports = {
+	createUser,
+	verifyUser
+};

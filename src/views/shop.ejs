@@ -1,14 +1,14 @@
 <%- include('partials/metadata'); -%>
 <%- include('partials/header'); -%>
-<div class="container shop-container">
+<div class="shop-container">
   <div class="filter">
     <div>
-      <label class="search-content"> BUSCAR </label>
-      <input placeholder="item o categoria"> 
+      <label class="search-content" > BUSCAR </label>
+      <input class="input-bord" placeholder=" item o categoria"style="margin-top: 3%;"> 
     </div>
     <div>
       <label class="search-content" for="names"> ORDENAR POR</label> 
-      <select style="width: 100%;" name="names" id="names"> 
+      <select style="width: 100%; margin-top: 3%;" name="names" id="names"> 
         <option value="1">Mayor a menor</option> 
         <option value="2">Menor a mayor</option> 
         <option value="3">Desordenado!!!</option> 
@@ -17,36 +17,37 @@
     <div class="row">
       <label class="search-content">PRECIO </label><br/>
       <div class="price">
-        <label class="min-max-content"> MIN</label> <input style="width: 20%;" placeholder="0">
+        <label class="min-max-content"> MIN</label> <input class="input-bord" style="width: 20%; height: 15px;" placeholder="0">
         <span>-</span> 
-        <label class="min-max-content"> MAX </label> <input style="width: 20%;" placeholder="0"> 
+        <label class="min-max-content"> MAX </label> <input class="input-bord" style="width: 20%; height: 15px;" placeholder="0"> 
       </div>
     </div>
 
     <div>
-      <label class="search-content"> FILTRAR </label><br/>
+      <label class="search-content"> FILTRAR </label>
       <div class="filtros">
-        <label class="new-content"><input type="checkbox" id="box1" value="1" /> NUEVOS </label></br>
-        <label class="new-content"><input type="checkbox" id="box1" value="2" /> OFERTAS </label></br>
-        <label class="new-content"><input type="checkbox" id="box1" value="3" /> EDICIÓN ESPECIAL </label></br>
+        <label class="new-content"><input type="checkbox" id="box1" value="1" /> NUEVOS </label>
+        <label class="new-content"><input type="checkbox" id="box1" value="2" /> OFERTAS </label>
+        <label class="new-content"><input type="checkbox" id="box1" value="3" /> EDICIÓN ESPECIAL </label>
         <label class="new-content"><input type="checkbox" id="box1" value="4" /> FAVORITOS </label>
       </div>
     </div>
   </div>
 
-  <div class="shop-column">
+  <div class="shop-column" style="display: flex; flex-direction: column;">
         
     <div class="container-cards">
+      
       <% items.forEach((item, i) => { %>
       <article class="card-item">
-        <a class="card-item__link" href="/shop/item/<%= item.id %>">
+        <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
           <picture class="card-item__cover">
             <span class="card-item__tag">Nuevo</span>
-            <img class="card-item__img--front" src=<%= item.image_front %> alt=<%= item.product_description %>>
-            <img class="card-item__img--back" src=<%= item.image_back %> alt="<%= item.product_description %> en caja">
+            <img class="card-item__img--front" src="public/img/<%= item.image_front %>" alt=<%= item.product_description %>>
+            <img class="card-item__img--back" src="public/img/<%= item.image_back %>" alt="<%= item.product_description %> en caja">
           </picture>
           <div class="card-item__content">
-            <p class="card-item__licence"><%= item.License.license_name %></p>
+            <p class="card-item__licence"><%= item.licence_name %></p>
             <h4 class="card-item__name"><%= item.product_name %></h4>
             <p class="card-item__price"><%= item.price %></p>
             <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
@@ -54,8 +55,21 @@
         </a>
       </article>
       <% }) %>
-    </div>
-    
+      
+    </div>  
+      <div class="pag-btn">
+  <ul>
+    <a class="primera-pag" style="padding: 1%;"><li><iconify-icon icon="tabler:chevron-left"></iconify-icon></li></a>
+    <a href="" class="selected"><li><b>1</b></li></a>
+    <a href=""><li><b>2</b></li></a>
+    <a href=""><li><b>...</b></li></a>
+    <a href=""><li><b>9</b></li></a> 
+    <a href=""><li><b>10</b></li></a>
+    <a href="" style="padding: 1%;"><li><iconify-icon icon="tabler:chevron-right"></iconify-icon></li></a>
+  </ul>
+</div>  
   </div>
-</div>
+
+</div>    
+
 <%- include('partials/footer'); -%>

@@ -1,0 +1,78 @@
+<%- include('partials/metadata'); -%> <%- include('partials/header'); -%>
+<div class="fondo">
+  <div class="container">
+    <div class="container-chico" style=" max-width: 100%;" >
+      <form method="GET" action="" class="mb-3">
+        <div class="row edit">
+          <div class="search">           
+            <button class="icon-search" type="submit">
+              <img
+                src="../../../public/img/icons/search_icon.svg"
+                alt="icono de search"
+              />
+            </button>
+            <input
+              type="text"
+              class="form-control input-bord"
+              id="filtro"
+              name="filtro"
+              placeholder="  código, nombre o categoría"
+              style="width: 300px;"
+            />
+          </div>
+        </div>
+      </form>
+      <div class="op" >
+        <div>
+          <h1 class="admin-title"><b>LISTADO DE PRODUCTOS</b></h1>
+        </div>
+        <div >
+          <h3 style="width: 100%; ">
+            <a href="admin/create" style="display: flex; gap: 10px;" > AGREGAR <i class='bx bxs-plus-square' style="font-size: 2.5rem; color: var(--primary-solid);"></i></a>
+          </h3>
+        </div>
+      </div>
+
+      <div>
+          <table class="tabla-list">
+            <thead >
+              <tr class="t-head-admin" >
+                <th>ID</th>
+                <th>Código</th>
+                <th>Nombre del producto</th>
+                <th>Categoría</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody style="width: 100%">
+            <% items.forEach(item => { %>
+              <tr>
+                <td ><%= item.product_id %></td>
+                <td><%= item.sku %></td>
+                <td><%= item.product_name %></td>
+                <td><%= item.category_name %></td>
+                <td style="display: flex; gap: 20px;" >
+                  <a href="admin/edit/<%= item.product_id %>" class="icon-pencil">
+                    <img
+                      src="public/img/icons/edit_pencil.svg"
+                      alt="icono de editar"
+                    />
+                  </a>
+                  <form method="POST" action="admin/delete/<%= item.product_id %>?_method=DELETE">
+                  <button type="submit" class="icon-remove" style="background: none; border: none; cursor: pointer;">
+                    <img
+                      src="public/img/icons/delete_trash.svg"
+                      alt="icono de delete"
+                    />
+                  </button>
+                </form>
+                </td>
+              </tr>
+            <% }) %>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer'); -%>

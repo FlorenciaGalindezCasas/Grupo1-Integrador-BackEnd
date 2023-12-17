@@ -1,18 +1,32 @@
-<%- include('partials/metadata'); -%>
-<%- include('partials/header'); -%>
+<%- include('partials/metadata'); -%> <%- include('partials/header'); -%>
 <main class="main-container">
-
 	<section class="item_container">
-		<img src=<%= item.image_front %> alt=<%= item.product_description %>>
+		<img
+			src="../../public/img/<%= item.image_front %>"
+			alt="<%"
+			="item.product_description"
+			%
+		/>>
 		<div class="item_info_container">
-			<p><%= item.license_name %></p>
+			<p><%= item.licence_name %></p>
 			<p class="item_subtitle"><%= item.product_name %></p>
 			<p><%= item.product_description %></p>
-			<p class="item_precio"><%= item.product_price %></p>
-			<div class="numeric-input">
-				<input class="item_number" type="number" id="numero" value="0" min="0" max="100">
-				<a class="item_add_cart_btn" href=./shop>Agregar al Carrito</a>
-			</div>
+			<p class="item_precio">$ <%= item.price %></p>
+			<form action="/shop/item/<%= item.product_id %>/add" method="post">
+				<div class="numeric-input">
+					<input
+						class="item_number"
+						type="number"
+						name="cantidad"
+						value="0"
+						min="0"
+						max="100"
+					/>
+					<div class="btn-edit" style="width: 100%">
+						<input type="submit" value="Agregar al Carrito" />
+					</div>
+				</div>
+			</form>
 			<p class="item_promo">Ver métodos de pago - 3 CUOTAS SIN INTERÉS</p>
 		</div>
 	</section>
@@ -26,8 +40,16 @@
 						<a class="card-item__link" href="">
 							<picture class="card-item__cover">
 								<span class="card-item__tag">Nuevo</span>
-								<img class="card-item__img--front"src="../../../public/img/star-wars/trooper-1.webp" alt="Figura coleccionable Funko de un Stormtrooper">
-								<img class="card-item__img--back" src="../../../public/img/star-wars/trooper-box.webp" alt="Figura coleccionable Funko de un Stormtrooper en caja">
+								<img
+									class="card-item__img--front"
+									src="../../../public/img/star-wars/trooper-1.webp"
+									alt="Figura coleccionable Funko de un Stormtrooper"
+								/>
+								<img
+									class="card-item__img--back"
+									src="../../../public/img/star-wars/trooper-box.webp"
+									alt="Figura coleccionable Funko de un Stormtrooper en caja"
+								/>
 							</picture>
 							<div class="card-item__content">
 								<p class="card-item__licence">STAR WARS</p>
@@ -43,8 +65,16 @@
 						<a class="card-item__link" href="">
 							<picture class="card-item__cover">
 								<span class="card-item__tag">Nuevo</span>
-								<img class="card-item__img--front" src="../../../public/img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto">
-								<img class="card-item__img--back"  src="../../../public/img/pokemon/pidgeotto-box.webp" alt="Figura coleccionable Funko de Pidgeotto en caja">
+								<img
+									class="card-item__img--front"
+									src="../../../public/img/pokemon/pidgeotto-1.webp"
+									alt="Figura coleccionable Funko de Pidgeotto"
+								/>
+								<img
+									class="card-item__img--back"
+									src="../../../public/img/pokemon/pidgeotto-box.webp"
+									alt="Figura coleccionable Funko de Pidgeotto en caja"
+								/>
 							</picture>
 							<div class="card-item__content">
 								<p class="card-item__licence">POKEMON</p>
@@ -60,8 +90,16 @@
 						<a class="card-item__link" href="">
 							<picture class="card-item__cover">
 								<span class="card-item__tag">Nuevo</span>
-								<img class="card-item__img--front" src="../../../public/img/harry-potter/luna-1.webp" alt="Figura coleccionable Funko de Luna Lovegood">
-								<img class="card-item__img--back"  src="../../../public/img/harry-potter/luna-box.webp" alt="Figura coleccionable Funko de Luna Lovegood en caja">
+								<img
+									class="card-item__img--front"
+									src="../../../public/img/harry-potter/luna-1.webp"
+									alt="Figura coleccionable Funko de Luna Lovegood"
+								/>
+								<img
+									class="card-item__img--back"
+									src="../../../public/img/harry-potter/luna-box.webp"
+									alt="Figura coleccionable Funko de Luna Lovegood en caja"
+								/>
 							</picture>
 							<div class="card-item__content">
 								<p class="card-item__licence">HARRY POTTER</p>
@@ -85,19 +123,19 @@
 	</section>
 </main>
 <script>
-	new Glide('.glide', {
-		type: 'carousel',
-		startAt:0,
-		perView:3,
-		gap:30,
+	new Glide(".glide", {
+		type: "carousel",
+		startAt: 0,
+		perView: 3,
+		gap: 30,
 		breakpoint: {
 			991: {
-				perView: 2
+				perView: 2,
 			},
 			768: {
-				perView:1
-			}
-		}
+				perView: 1,
+			},
+		},
 	}).mount();
 </script>
 <%- include('partials/footer'); -%>

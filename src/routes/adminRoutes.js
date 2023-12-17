@@ -1,13 +1,21 @@
-const express = require("express");
-const adminController = require("../controllers/adminController");
-
+const express = require('express');
 const router = express.Router();
 
-router.get("/", adminController.getAdminView);
-router.get("/create", adminController.getCreateView);
-router.post("/create", adminController.create);
-router.get("/edit/:id", adminController.getUpdateView);
-router.put("/edit/:id", adminController.update);
-router.delete("/delete/:id", adminController.delete);
+const {
+	getAdminView,
+	getCreateView,
+	create,
+	getUpdateView,
+	update,
+	remove
+} = require('../controllers/adminController');
+const upload = require('../middlewares/uploadFiles');
+
+router.get('/', getAdminView);
+router.get('/create', getCreateView);
+router.post('/create', upload.array('image_front', 2), create);
+router.get('/edit/:id', getUpdateView);
+router.put('/edit/:id', upload.array('image_front', 2), update);
+router.delete('/delete/:id', remove);
 
 module.exports = router;
