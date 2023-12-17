@@ -20,7 +20,7 @@ const registerValidation = [
 			return new Promise(async (resolve, reject) => {
 				try {
 					const [userAlreadyExists] = await connection.query(`SELECT * FROM user WHERE email = '${value}';`);
-					if (userAlreadyExists) {
+					if (!userAlreadyExists) {
 						return reject();
 					} else {
 						return resolve();

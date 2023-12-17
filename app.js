@@ -24,14 +24,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
+
 require("dotenv").config();
 
 const PORT = 3000;
 
+
 app.use("/", mainRoutes);
 app.use("/admin", isLogged, adminRoutes);
-app.use("/auth", authRoutes);
-app.use("/shop", shopRoutes);
+app.use("/auth", isLogged, authRoutes);
+app.use("/shop", isLogged, shopRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening at http:/localhost:${PORT}`);

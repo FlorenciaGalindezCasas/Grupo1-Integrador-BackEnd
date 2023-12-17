@@ -24,6 +24,8 @@ const createUser = async (userObject) => {
       ]
     );
 
+    console.log("Usuario:", user[0]);
+
     return user;
   } catch (err) {
     return {

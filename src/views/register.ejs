@@ -2,27 +2,53 @@
 <div class="body-login">
   <div class="login-container">
     <div>
-      <h1 class="login-title"><b>CREA TU CUENTA</b></h1>
+      <h1 class="register-title"><b>CREA TU CUENTA</b></h1>
       <p>Completa el formulario para ser parte del mundo de los Funkos</p>
     </div>
-    <div style="width: 100%">
-      <form class="form" action="" method="post">
-        <label for="">Nombre: <input type="name" placeholder="Jphn" /></label>
-        <label for=""
-          >Apellido: <input type="lastname" placeholder="Doe"
+    <div style="width: 75%">
+      <form class="form register" action="./register" method="post">
+        <label for="name"
+          >Nombre: <input type="name" name="name" placeholder="John" required
+        /></label>
+        <label for="lastname"
+          >Apellido:
+          <input type="lastname" name="lastname" placeholder="Doe" required
+        /></label>
+        <label for="email"
+          >Email:
+          <input
+            type="email"
+            name="email"
+            placeholder="johndoe@correo.com"
+            required
+        /></label>
+        <label for="password"
+          >Contraseña:
+          <input
+            type="password"
+            name="password"
+            placeholder="contraseña"
+            required
         /></label>
         <label for=""
-          >Email: <input type="email" placeholder="johndoe@correo.com"
+          >Repita Contraseña:
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="contraseña"
+            required
         /></label>
-        <label for=""
-          >Contraseña: <input type="password" placeholder="contraseña"
-        /></label>
-        <label for=""
-          >Repita Contraseña: <input type="password" placeholder="contraseña"
-        /></label>
-        <div class="btn-login">
-          <button>Registrar</button>
-          <div class="checkbox"><input type="checkbox" />Acepto <a href="" style="color: #6c86e5">Terminos y Condiciones</a></div>
+        <div class="btn-login btn-edit" style="justify-content: space-between">
+          <input type="submit" value="Registrar" ">
+          <div
+            class="checkbox"
+            style="width: 90%; display: flex; justify-content: right"
+          >
+            <input type="checkbox" style="width: 10%" /> Acepto
+            <a href="" style="color: #6c86e5; padding-left: 3%">
+              Terminos y Condiciones</a
+            >
+          </div>
         </div>
       </form>
     </div>

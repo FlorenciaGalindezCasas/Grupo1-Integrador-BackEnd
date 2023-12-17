@@ -33,6 +33,8 @@ const authController = {
       };
   
       const createdUser = await createUser(userToCreate);
+
+      console.log(createdUser[0]);
       
       return res.status(200).json({createdUser});
     } catch (error) {

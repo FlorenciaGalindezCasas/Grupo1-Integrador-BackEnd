@@ -722,6 +722,20 @@ form{
    font-size: 4rem;
 }
 
+/* LOGIN */
+.register-title{
+   text-align:center;
+   font-weight: bold;
+   font-size: 4rem;
+}
+
+.register input{
+   width:50%
+
+}
+
+
+
 /* ADMIN */
 
 .container-chico{

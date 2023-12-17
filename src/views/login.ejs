@@ -6,15 +6,15 @@
       <h1 class="login-title"><b>INGRESAR A MI CUENTA</b></h1>
     </div>
     <div style="width: 100%;">
-      <form class="form" action="" method="post">
-        <label for=""
-          >Email: <input type="email" placeholder="examplemail@email.com"
+      <form class="form" action="./login" method="POST">
+        <label for="email"
+          >Email: <input type="email" name="email" placeholder="examplemail@email.com"
         /></label>
-        <label for=""
-          >Contraseña: <input type="password" placeholder="contraseña"
+        <label for="password"
+          >Contraseña: <input type="password" name="password" placeholder="contraseña"
         /></label>
-        <div class="btn-login">
-            <button>Ingresar</button>
+        <div class="btn-login btn-edit">
+          <input type="submit" value="Ingresar" ">
             <div class="checkbox">
                 <input type="checkbox">Recordarme
             </div>            
