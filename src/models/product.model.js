@@ -119,6 +119,8 @@ const editProduct = async (id, body) => {
       values
     );
 
+    console.log(row);
+
     if (row.affectedRows === 0) {
       return {
         error: true,
@@ -126,10 +128,12 @@ const editProduct = async (id, body) => {
       };
     }
 
-    const editedItem = connection.query(
+    const [editedItem] = await connection.query(
       getByIdQuery,
       id
     );
+
+    console.log("Item edit:", editedItem);
 
     return editedItem;
   } catch (err) {

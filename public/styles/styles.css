@@ -572,7 +572,6 @@ iconify-icon {
  }
 
  .cart-cant input{
-   
    width:25%;
    text-align: center;
     
@@ -752,7 +751,10 @@ form{
 }
 
 .tabla-list{
-   padding-left:2%
+   
+   flex-direction: column;
+   justify-content: center;
+   padding: 0 3% 3% 3%
 }
 
 .tabla-list tr{

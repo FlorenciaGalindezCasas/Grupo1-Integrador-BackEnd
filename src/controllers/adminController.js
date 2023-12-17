@@ -24,7 +24,6 @@ const adminController = {
       title: "Create",
     }),
   create: async (req, res) => {
-    console.log(req.body);
     try {
       const productObject = {
         product_name: req.body.product_name,
@@ -34,8 +33,8 @@ const adminController = {
         discount: req.body.discount,
         sku: req.body.sku,
         dues: req.body.dues,
-        image_front: req.files[0].originalname,
-        image_back: req.files[1].originalname,
+        image_front: `/products/${req.files[0].filename}`,
+        image_back: `/products/${req.files[1].filename}`,
         category_id: req.body.category_id,
         licence_id: req.body.licence_id,
       };
@@ -71,7 +70,9 @@ const adminController = {
     try {
       const { id } = req.params;
 
-      const item = await editProduct(+id, req.body);
+      const [item] = await editProduct(+id, req.body);
+
+      console.log("Item: ", item);
 
       return res.status(200).render("item", {
         item,
