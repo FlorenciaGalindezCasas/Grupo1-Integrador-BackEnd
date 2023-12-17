@@ -1,25 +1,24 @@
-<%- include('partials/metadata'); -%>
-<%- include('partials/header'); -%>
+<%- include('partials/metadata'); -%> <%- include('partials/header'); -%>
 <div class="body-login">
   <div class="login-container">
     <div>
       <h1 class="login-title"><b>INGRESAR A MI CUENTA</b></h1>
     </div>
-    <div style="width: 100%;">
+    <div style="width: 100%">
       <form class="form" action="./login" method="POST">
         <label for="email"
-          >Email: <input type="email" name="email" placeholder="examplemail@email.com"
+          >Email:
+          <input type="email" name="email" placeholder="examplemail@email.com"
         /></label>
         <label for="password"
-          >Contraseña: <input type="password" name="password" placeholder="contraseña"
+          >Contraseña:
+          <input type="password" name="password" placeholder="contraseña"
         /></label>
         <div class="btn-login btn-edit">
           <input type="submit" value="Ingresar" ">
-            <div class="checkbox">
-                <input type="checkbox">Recordarme
-            </div>            
+          <div class="checkbox"><input type="checkbox" />Recordarme</div>
         </div>
-        <a href="" style="color:#6C86E5;">Olvidé mi contraseña</a>
+        <a href="" style="color: #6c86e5">Olvidé mi contraseña</a>
       </form>
     </div>
   </div>

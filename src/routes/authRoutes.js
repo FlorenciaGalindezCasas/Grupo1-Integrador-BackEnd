@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
 const { 
@@ -7,16 +7,17 @@ const {
 	getRegisterView,
 	register, 
 	logout: logout,
-} = require("../controllers/authController");
+} = require('../controllers/authController');
 const { connection } = require('../config/connection');
 const validation = require('../middlewares/validation');
 
 const registerValidation = [
-	body("email")
+	body('email')
 		.isEmail()
-		.withMessage("Ingrese un email valido")
+		.withMessage('Ingrese un email valido')
 		.bail()
 		.custom((value, {req}) => {
+			// eslint-disable-next-line no-async-promise-executor
 			return new Promise(async (resolve, reject) => {
 				try {
 					const [userAlreadyExists] = await connection.query(`SELECT * FROM user WHERE email = '${value}';`);
@@ -28,10 +29,10 @@ const registerValidation = [
 				} catch (error) {
 					console.log(error);
 				}
-			})
+			});
 		})
-		.withMessage("El email ya se encuentra registrado"),
-	body("password")
+		.withMessage('El email ya se encuentra registrado'),
+	body('password')
 		.isStrongPassword( {
 			minLength: 6,
 			minLowercase: 1,
@@ -46,15 +47,15 @@ const registerValidation = [
 			pointsPerUnique: 0,
 			returnScore: 0
 		})
-		.withMessage("La contraseña debe tener un minimo de 6 caracteres, incluyendo una minuscula, una mayuscula y un numero")
+		.withMessage('La contraseña debe tener un minimo de 6 caracteres, incluyendo una minuscula, una mayuscula y un numero')
 		.custom((value, {req}) => value === req.body.confirmPassword)
-		.withMessage("Las contraseñas no coinciden")
+		.withMessage('Las contraseñas no coinciden')
 ];
 
-router.get("/login", getLoginView);
-router.post("/login", login);
-router.get("/register", getRegisterView);
-router.post("/register", registerValidation, validation, register);
-router.get("/logout", logout);
+router.get('/login', getLoginView);
+router.post('/login', login);
+router.get('/register', getRegisterView);
+router.post('/register', registerValidation, validation, register);
+router.get('/logout', logout);
 
 module.exports = router;

@@ -52,17 +52,19 @@
                 <td><%= item.product_name %></td>
                 <td><%= item.category_name %></td>
                 <td style="display: flex; gap: 20px;" >
-                  <a href="admin/edit/<%= item.product_id %>" class="icon-pencil"
-                    ><img
+                  <a href="admin/edit/<%= item.product_id %>" class="icon-pencil">
+                    <img
                       src="public/img/icons/edit_pencil.svg"
                       alt="icono de editar"
-                  /></a>
+                    />
+                  </a>
                   <form method="POST" action="admin/delete/<%= item.product_id %>?_method=DELETE">
-                  <button type="submit" class="icon-remove" style="background: none; border: none; cursor: pointer;"
-                    ><img
+                  <button type="submit" class="icon-remove" style="background: none; border: none; cursor: pointer;">
+                    <img
                       src="public/img/icons/delete_trash.svg"
                       alt="icono de delete"
-                  /></button>
+                    />
+                  </button>
                 </form>
                 </td>
               </tr>
