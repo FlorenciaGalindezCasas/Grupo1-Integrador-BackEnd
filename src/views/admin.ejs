@@ -1,7 +1,7 @@
 <%- include('partials/metadata'); -%> <%- include('partials/header'); -%>
 <div class="fondo">
-  <div class="container" style="width: 100%">
-    <div class="container-chico" style="width: 100%">
+  <div class="container">
+    <div class="container-chico" style=" max-width: 100%;" >
       <form method="GET" action="" class="mb-3">
         <div class="row edit">
           <div class="search">           
@@ -22,21 +22,21 @@
           </div>
         </div>
       </form>
-      <div class="op">
+      <div class="op" >
         <div>
           <h1 class="admin-title"><b>LISTADO DE PRODUCTOS</b></h1>
         </div>
         <div >
-          <h3 >
-            <a style="display: flex; align-items: center; gap: 5px;"href="admin/create">AGREGAR <i class='bx bxs-plus-square' style="font-size: 2.5rem; color: var(--primary-solid);"></i></a>
+          <h3 style="width: 100%; ">
+            <a href="admin/create" style="display: flex; gap: 10px;" > AGREGAR <i class='bx bxs-plus-square' style="font-size: 2.5rem; color: var(--primary-solid);"></i></a>
           </h3>
         </div>
       </div>
 
-      <div style="width: 100%">
-          <table class="tabla-list" style="width: 100%;display:flex; align-content: center ">
-            <thead style="width: 100%;" >
-              <tr class="t-head-admin">
+      <div>
+          <table class="tabla-list">
+            <thead >
+              <tr class="t-head-admin" >
                 <th>ID</th>
                 <th>Código</th>
                 <th>Nombre del producto</th>
@@ -44,14 +44,14 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody style="width: 100%;">
+            <tbody style="width: 100%">
             <% items.forEach(item => { %>
               <tr>
-                <td style="padding: 2px;"><%= item.product_id %></td>
+                <td ><%= item.product_id %></td>
                 <td><%= item.sku %></td>
                 <td><%= item.product_name %></td>
                 <td><%= item.category_name %></td>
-                <td style="display: flex; gap: 10px; justify-content: center;">
+                <td style="display: flex; gap: 20px;" >
                   <a href="admin/edit/<%= item.product_id %>" class="icon-pencil"
                     ><img
                       src="public/img/icons/edit_pencil.svg"

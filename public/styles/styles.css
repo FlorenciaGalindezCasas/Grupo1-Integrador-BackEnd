@@ -431,7 +431,8 @@ iconify-icon {
 .shop-container {
    display: grid;
    grid-template-columns: 1fr 1fr; 
-   gap: 20px;
+   gap: 30px;
+   margin:5%
 }
 .search-content {
    font-size: 14px;
@@ -457,7 +458,6 @@ iconify-icon {
 }
 
 .filter{
-   margin-top:25%;
    display:flex;
    flex-direction:column;
    gap: 20px
@@ -487,6 +487,47 @@ iconify-icon {
    align-items: center;
    gap:5px
 }
+
+.pag-btn ul{   
+   display: flex;
+   align-items: center; 
+   justify-content: center; 
+   gap: 20px;
+   font-size:18px;
+   margin-top:10%   
+}
+
+.pag-btn li{
+   display:flex;
+   align-items:center;
+   text-align:center;
+}
+
+.pag-btn iconify-icon{
+   font-size:32.5px;
+   color: rgba(0, 0, 0, 0.2);
+}
+
+.primera-pag{
+   border: 1px solid rgba(0, 0, 0, 0) !important;
+   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.primera-pag iconify-icon{
+   color: white
+}
+
+.pag-btn a{
+   border: 2px solid rgba(0, 0, 0, 0.1);
+   border-radius: 5px;
+   padding: 10px 15px
+}
+
+.selected{
+  border: 2px solid var(--primary-solid) !important;
+  color: var(--primary-solid);
+}
+
 
 /*CARRITO*/
 
@@ -727,6 +768,7 @@ form{
    text-align:center;
    font-weight: bold;
    font-size: 4rem;
+   margin-bottom: 5%
 }
 
 .register input{
@@ -737,12 +779,18 @@ form{
 
 
 /* ADMIN */
+.fondo{
+   min-height:100vh
+}
 
 .container-chico{
    display:flex;
    flex-direction:column;
+   justify-content:center;
+   align-items:center;
    gap: 30px;
-   margin-top:3%
+   margin:3%;
+   font-size:2rem
 }
 
 .op{
@@ -759,25 +807,36 @@ form{
 }
 
 .search{
+   margin-left: 7%;
    display:flex;
    align-items:center; 
    gap: 10px
 }
-
-.tabla-list{
-   
-   flex-direction: column;
-   justify-content: center;
-   padding: 0 3% 3% 3%
 }
+.tabla-list {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+  }
 
+.t-head-admin th {
+   padding: 15px;
+  }
+
+.tabla-list td,
+.tabla-list th {
+   padding: 2px 50px; 
+   text-align: left;
+}
+/* 
 .tabla-list tr{
    text-align:left
 }
 
-.tabla-list td, .tabla-list th{
-   width:150px
-}
+.tabla-list td, .tabla-list th {
+width:170px
+
+} */
 
 .admin-title{
    font-size: 3rem

@@ -1,6 +1,6 @@
 <%- include('partials/metadata'); -%>
 <%- include('partials/header'); -%>
-<div class="container shop-container">
+<div class="shop-container">
   <div class="filter">
     <div>
       <label class="search-content" > BUSCAR </label>
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="shop-column">
+  <div class="shop-column" style="display: flex; flex-direction: column;">
         
     <div class="container-cards">
       
@@ -55,8 +55,21 @@
         </a>
       </article>
       <% }) %>
-    </div>
-    
+      
+    </div>  
+      <div class="pag-btn">
+  <ul>
+    <a class="primera-pag" style="padding: 1%;"><li><iconify-icon icon="tabler:chevron-left"></iconify-icon></li></a>
+    <a href="" class="selected"><li><b>1</b></li></a>
+    <a href=""><li><b>2</b></li></a>
+    <a href=""><li><b>...</b></li></a>
+    <a href=""><li><b>9</b></li></a> 
+    <a href=""><li><b>10</b></li></a>
+    <a href="" style="padding: 1%;"><li><iconify-icon icon="tabler:chevron-right"></iconify-icon></li></a>
+  </ul>
+</div>  
   </div>
-</div>
+
+</div>    
+
 <%- include('partials/footer'); -%>
