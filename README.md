@@ -2,7 +2,8 @@
 ## Funkoshop
 Ecommerce de Funkos desarrollada con Node.js
 
-![image](https://github.com/FlorenciaGalindezCasas/Grupo1-Integrador-BackEnd/assets/94094158/260e7662-63ab-4301-bafb-89fd2268e5e3)
+![image](https://github.com/FlorenciaGalindezCasas/Grupo1-Integrador-BackEnd/assets/94094158/e28483d9-3ae2-4c0d-a594-ebf735b286cd)
+
 
 ## Tecnologías
 
