@@ -10,18 +10,12 @@ const authRoutes = require('./src/routes/authRoutes.js');
 const adminRoutes = require('./src/routes/adminRoutes.js');
 const shopRoutes = require('./src/routes/shopRoutes.js');
 const { isLogged } = require('./src/middlewares/authorization.js');
+const { connection } = require('./src/config/connection.js');
 
 const app = express();
 const sessionStore = new MySQLStore({
-	host: process.env.DB_HOST,
-	user: process.env.DB_USERNAME,
-	password: process.env.DB_PASSWORD,
-	database: process.env.DB_NAME,  
-	port: process.env.DB_PORT,
-	waitForConnections: true,
-	connectionLimit: 10,  
-	queueLimit: 0
-});
+	expiration: 5 * 60 * 1000
+}, connection);
 
 app.use('/public', express.static(path.resolve(__dirname, 'public')));
 app.set('view engine', 'ejs');
@@ -30,7 +24,10 @@ app.use(session({
 	secret: 's3cr3TS3ss1oN',
 	store: sessionStore,
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+	cookie: {
+		maxAge: 5 * 60 * 1000
+	}
 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
