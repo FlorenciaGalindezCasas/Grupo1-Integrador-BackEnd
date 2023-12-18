@@ -3,6 +3,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
+require('dotenv').config();
 
 const mainRoutes = require('./src/routes/mainRoutes.js');
 const authRoutes = require('./src/routes/authRoutes.js');
