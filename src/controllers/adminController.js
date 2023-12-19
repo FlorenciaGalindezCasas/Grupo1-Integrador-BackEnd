@@ -81,7 +81,7 @@ const adminController = {
 			category_id: req.body.category_id,
 			licence_id: req.body.licence_id,
 		};
-
+		
 		const [item] = await editProduct(+id, productObject);
 
 		if (item !== undefined && item.error) {
@@ -96,18 +96,9 @@ const adminController = {
 	remove: async (req, res) => {
 		const { id } = req.params;
 
-		const [productToDetele] = await deleteProduct(+id);
+		await deleteProduct(+id);
 
-		if (productToDetele !== undefined && productToDetele.error) {
-			return res.status(400).json({ error: productToDetele.message });
-		}
-
-		const itemsUpdated = await getAll();
-
-		return res.status(200).render('admin', {
-			items: itemsUpdated,
-			title: 'Admin',
-		});
+		return res.status(200).redirect('/admin');
 	},
 };
 
