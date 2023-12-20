@@ -78,10 +78,10 @@ const adminController = {
 			discount: +req.body.discount,
 			sku: req.body.sku,
 			dues: +req.body.dues,
-			image_front: req.files !== undefined
+			image_front: req.files[0] !== undefined
 				? `/products/${req.files[0].filename}`
 				: productToEdit.image_front,
-			image_back: req.files !== undefined
+			image_back: req.files[1] !== undefined
 				? `/products/${req.files[1].filename}`
 				: productToEdit.image_back,
 			category_id: +req.body.category_id,
